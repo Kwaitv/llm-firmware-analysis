@@ -1,0 +1,3 @@
+#!/usr/bin/bash
+source bin/activate
+jupyter-lab
