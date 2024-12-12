@@ -1,0 +1,147 @@
+undefined4 main(int argc, char **argv)
+{
+    char *pcVar1;
+    bool bVar2;
+    bool bVar3;
+    float fVar4;
+    bool bVar5;
+    int32_t iVar6;
+    int64_t iVar7;
+    code *arg1;
+    int64_t extraout_RDX;
+    int64_t iVar8;
+    undefined4 uVar9;
+    int64_t iVar10;
+    int64_t in_FS_OFFSET;
+    double dVar11;
+    double dVar12;
+    double dVar13;
+    undefined8 uVar14;
+    int64_t arg7;
+    undefined auVar15 [16];
+    int64_t var_68h;
+    int64_t var_60h;
+    int64_t var_58h;
+    time_t var_50h;
+    int64_t var_48h;
+    int64_t canary;
+    
+    // [13] -r-x section size 1440 named .text
+    bVar5 = false;
+    iVar8 = 1000;
+    canary = *(int64_t *)(in_FS_OFFSET + 0x28);
+    for (iVar10 = 1; (int32_t)iVar10 < argc; iVar10 = iVar10 + 1) {
+        pcVar1 = argv[iVar10];
+        iVar6 = strncmp(pcVar1, data.00002008, 2);
+        if ((iVar6 == 0) || (*pcVar1 == 'c')) {
+            bVar5 = true;
+        } else {
+            iVar8 = atol();
+            if (iVar8 < 1) {
+                fputs("usage: whetdc [-c] [loops]\n", _stderr);
+                goto code_r0x0000145d;
+            }
+        }
+    }
+    while( true ) {
+        iVar10 = time(0);
+        bVar2 = false;
+        arg7 = 0x3ff0000000000000;
+        uVar14 = 0x4000000000000000;
+        _data.000040e0 = -1.0;
+        dVar12 = -1.0;
+        dVar11 = -1.0;
+        _data.000040f8 = 0x3fdfff972474538f;
+        dVar13 = 1.0;
+        _data.000040e8 = 0x4000000000000000;
+        _data.000040f0 = 0.50025;
+        _data.000040c8 = 1.0;
+        _data.000040d0 = -1.0;
+        _data.000040d8 = -1.0;
+        for (iVar7 = 1; iVar7 <= iVar8 * 0xc; iVar7 = iVar7 + 1) {
+            bVar2 = true;
+            dVar13 = ((dVar13 + dVar11 + dVar12) - _data.000040e0) * 0.499975;
+            dVar11 = (((dVar11 + dVar13) - dVar12) + _data.000040e0) * 0.499975;
+            dVar12 = ((dVar13 - dVar11) + dVar12 + _data.000040e0) * 0.499975;
+            _data.000040e0 = (_data.000040e0 + (dVar11 - dVar13) + dVar12) * 0.499975;
+        }
+        if (!bVar2) {
+            _data.000040e0 = -1.0;
+            dVar13 = _data.000040c8;
+            dVar11 = _data.000040d0;
+            dVar12 = _data.000040d8;
+        }
+        _data.000040d8 = dVar12;
+        _data.000040d0 = dVar11;
+        _data.000040c8 = dVar13;
+        arg1 = data.000040c0;
+        iVar7 = 1;
+        while (iVar7 <= iVar8 * 0xe) {
+            fcn.00001589((int64_t)arg1);
+            iVar7 = extraout_RDX;
+        }
+        _data.000040a8 = 1;
+        bVar2 = false;
+        bVar3 = false;
+        _data.000040a4 = 2;
+        _data.000040a0 = 3;
+        for (iVar7 = 1; iVar7 <= iVar8 * 0xd2; iVar7 = iVar7 + 1) {
+            bVar2 = true;
+            bVar3 = true;
+        }
+        if (bVar2) {
+            _data.000040c8 = 6.0;
+        }
+        if (bVar3) {
+            _data.000040d0 = 6.0;
+        }
+        auVar15._8_8_ = &var_48h;
+        auVar15._0_8_ = 1;
+        var_48h = arg7;
+        while( true ) {
+            iVar7 = auVar15._0_8_;
+            if (iVar7 != iVar8 * 899 && SBORROW8(iVar7, iVar8 * 899) == iVar7 + iVar8 * -899 < 0) break;
+            auVar15 = fcn.00001657(arg7, arg7, auVar15._8_8_);
+        }
+        _data.000040d8 = 3.0;
+        _data.000040c8 = (double)arg7;
+        _data.000040d0 = (double)uVar14;
+        for (iVar7 = 1; iVar7 == iVar8 * 0x268 || SBORROW8(iVar7, iVar8 * 0x268) != iVar7 + iVar8 * -0x268 < 0;
+            iVar7 = iVar7 + 1) {
+            fcn.0000161c();
+        }
+        uVar14 = 0x3fe8000000000000;
+        _data.000040a8 = 2;
+        _data.000040a4 = 3;
+        for (iVar7 = 1; iVar7 == iVar8 * 0x5d || SBORROW8(iVar7, iVar8 * 0x5d) != iVar7 + iVar8 * -0x5d < 0;
+            iVar7 = iVar7 + 1) {
+            dVar13 = (double)log();
+            exp(dVar13 / _data.000040f0);
+            uVar14 = sqrt();
+        }
+        iVar7 = time(uVar14, 0);
+        putchar(10);
+        if (iVar7 - iVar10 < 1) break;
+        printf("Loops: %ld, Iterations: %d, Duration: %ld sec.\n", iVar8, 1);
+        fVar4 = ((float)iVar8 * 100.0) / (float)(iVar7 - iVar10);
+        dVar13 = (double)fVar4;
+        if (1000.0 <= fVar4) {
+            dVar13 = dVar13 / 1000.0;
+        }
+        printf(dVar13);
+        if (!bVar5) {
+            uVar9 = 0;
+code_r0x00001460:
+            if (canary == *(int64_t *)(in_FS_OFFSET + 0x28)) {
+                return uVar9;
+            }
+    // WARNING: Subroutine does not return
+            __stack_chk_fail();
+        }
+    }
+    puts("Insufficient duration- Increase the LOOP count");
+code_r0x0000145d:
+    uVar9 = 1;
+    goto code_r0x00001460;
+}
+

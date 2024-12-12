@@ -1,3 +1,9 @@
 [submodule "gnu-tools-for-stm32"]
 	path = gnu-tools-for-stm32
 	url = https://github.com/STMicroelectronics/gnu-tools-for-stm32.git
+[submodule "llms-for-code-analysis"]
+	path = llms-for-code-analysis
+	url = https://github.com/aseec-lab/llms-for-code-analysis.git
+[submodule "FirmBench"]
+	path = FirmBench
+	url = https://github.com/aseec-lab/FirmBench.git

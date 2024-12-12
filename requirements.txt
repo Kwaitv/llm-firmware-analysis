@@ -1,3 +1,6 @@
 jupyterlab
+tqdm
 torch
 transformers
+huggingface_hub[cli]
+accelerate

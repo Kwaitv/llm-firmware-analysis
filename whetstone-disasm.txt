@@ -1,0 +1,351 @@
+
+     file format elf64-x86-64
+
+
+
+
+
+push   %r15
+lea    0xf1f(%rip),%r15        # 2008 <exp@plt+0xf38>
+push   %r14
+push   %r13
+mov    %edi,%r13d
+push   %r12
+push   %rbp
+xor    %ebp,%ebp
+push   %rbx
+mov    $0x3e8,%ebx
+sub    $0x38,%rsp
+0x28,%r14
+mov    %r14,0x28(%rsp)
+mov    %rsi,%r14
+push   $0x1
+pop    %r12
+cmp    %r12d,%r13d
+jle    1165 <exp@plt+0x95>
+mov    (%r14,%r12,8),%rdi
+push   $0x2
+mov    %r15,%rsi
+pop    %rdx
+mov    %rdi,(%rsp)
+call   1040 <strncmp@plt>
+test   %eax,%eax
+je     115d <exp@plt+0x8d>
+mov    (%rsp),%rdi
+cmpb   $0x63,(%rdi)
+je     115d <exp@plt+0x8d>
+call   10b0 <atol@plt>
+xchg   %rax,%rbx
+test   %rbx,%rbx
+jg     1160 <exp@plt+0x90>
+mov    0x2f34(%rip),%rsi        # 4080 <stderr@GLIBC_2.2.5>
+lea    0xeb8(%rip),%rdi        # 200b <exp@plt+0xf3b>
+call   1080 <fputs@plt>
+jmp    145d <exp@plt+0x38d>
+push   $0x1
+pop    %rbp
+inc    %r12
+jmp    1114 <exp@plt+0x44>
+imul   $0xc,%rbx,%rax
+imul   $0x383,%rbx,%r13
+imul   $0x268,%rbx,%r14
+mov    %rax,(%rsp)
+imul   $0xe,%rbx,%rax
+imul   $0x5d,%rbx,%r15
+mov    %rax,0x8(%rsp)
+imul   $0xd2,%rbx,%rax
+mov    %rax,0x10(%rsp)
+xor    %edi,%edi
+call   10a0 <time@plt>
+movsd  0xf4d(%rip),%xmm4        # 20f0 <exp@plt+0x1020>
+push   $0x1
+xor    %edx,%edx
+xchg   %rax,%r12
+mov    0xf58(%rip),%rax        # 2108 <exp@plt+0x1038>
+movsd  0xf3f(%rip),%xmm8        # 20f8 <exp@plt+0x1028>
+movsd  0xf57(%rip),%xmm7        # 2118 <exp@plt+0x1048>
+movaps %xmm4,%xmm3
+movaps %xmm4,%xmm1
+movaps %xmm4,%xmm0
+mov    %rax,0x2f27(%rip)        # 40f8 <stderr@GLIBC_2.2.5+0x78>
+mov    0xf38(%rip),%rax        # 2110 <exp@plt+0x1040>
+movaps %xmm8,%xmm2
+movsd  %xmm7,0x2f04(%rip)        # 40e8 <stderr@GLIBC_2.2.5+0x68>
+mov    %rax,0x2f05(%rip)        # 40f0 <stderr@GLIBC_2.2.5+0x70>
+pop    %rax
+movsd  %xmm8,0x2ed3(%rip)        # 40c8 <stderr@GLIBC_2.2.5+0x48>
+movsd  %xmm4,0x2ed3(%rip)        # 40d0 <stderr@GLIBC_2.2.5+0x50>
+movsd  %xmm4,0x2ed3(%rip)        # 40d8 <stderr@GLIBC_2.2.5+0x58>
+mov    (%rsp),%rsi
+cmp    %rsi,%rax
+jg     126f <exp@plt+0x19f>
+addsd  %xmm0,%xmm2
+inc    %rax
+mov    $0x1,%dl
+addsd  %xmm1,%xmm2
+subsd  %xmm3,%xmm2
+mulsd  0xee1(%rip),%xmm2        # 2108 <exp@plt+0x1038>
+addsd  %xmm2,%xmm0
+movaps %xmm2,%xmm5
+subsd  %xmm1,%xmm0
+addsd  %xmm3,%xmm0
+mulsd  0xeca(%rip),%xmm0        # 2108 <exp@plt+0x1038>
+subsd  %xmm0,%xmm5
+addsd  %xmm1,%xmm5
+movsd  0xeba(%rip),%xmm1        # 2108 <exp@plt+0x1038>
+addsd  %xmm3,%xmm5
+mulsd  %xmm5,%xmm1
+movaps %xmm0,%xmm5
+subsd  %xmm2,%xmm5
+addsd  %xmm1,%xmm5
+addsd  %xmm5,%xmm3
+mulsd  0xe9b(%rip),%xmm3        # 2108 <exp@plt+0x1038>
+jmp    1205 <exp@plt+0x135>
+test   %dl,%dl
+jne    127d <exp@plt+0x1ad>
+movsd  %xmm4,0x2e65(%rip)        # 40e0 <stderr@GLIBC_2.2.5+0x60>
+jmp    129d <exp@plt+0x1cd>
+movsd  %xmm3,0x2e5b(%rip)        # 40e0 <stderr@GLIBC_2.2.5+0x60>
+movsd  %xmm1,0x2e4b(%rip)        # 40d8 <stderr@GLIBC_2.2.5+0x58>
+movsd  %xmm0,0x2e3b(%rip)        # 40d0 <stderr@GLIBC_2.2.5+0x50>
+movsd  %xmm2,0x2e2b(%rip)        # 40c8 <stderr@GLIBC_2.2.5+0x48>
+push   $0x1
+lea    0x2e1a(%rip),%rcx        # 40c0 <stderr@GLIBC_2.2.5+0x40>
+pop    %rdx
+mov    0x8(%rsp),%rax
+cmp    %rax,%rdx
+jg     12be <exp@plt+0x1ee>
+mov    %rcx,%rdi
+inc    %rdx
+call   1589 <exp@plt+0x4b9>
+jmp    12a7 <exp@plt+0x1d7>
+movl   $0x1,0x2de0(%rip)        # 40a8 <stderr@GLIBC_2.2.5+0x28>
+xor    %ecx,%ecx
+xor    %edx,%edx
+movl   $0x2,0x2dce(%rip)        # 40a4 <stderr@GLIBC_2.2.5+0x24>
+movl   $0x3,0x2dc0(%rip)        # 40a0 <stderr@GLIBC_2.2.5+0x20>
+push   $0x1
+pop    %rax
+mov    0x10(%rsp),%rsi
+cmp    %rsi,%rax
+jg     12f6 <exp@plt+0x226>
+inc    %rax
+mov    $0x1,%cl
+mov    $0x1,%dl
+jmp    12e3 <exp@plt+0x213>
+test   %cl,%cl
+je     1308 <exp@plt+0x238>
+mov    0xe1f(%rip),%rax        # 2120 <exp@plt+0x1050>
+mov    %rax,0x2dc0(%rip)        # 40c8 <stderr@GLIBC_2.2.5+0x48>
+test   %dl,%dl
+je     131a <exp@plt+0x24a>
+mov    0xe0d(%rip),%rax        # 2120 <exp@plt+0x1050>
+mov    %rax,0x2db6(%rip)        # 40d0 <stderr@GLIBC_2.2.5+0x50>
+movsd  %xmm8,0x20(%rsp)
+push   $0x1
+pop    %rax
+lea    0x20(%rsp),%rdx
+cmp    %r13,%rax
+jg     1343 <exp@plt+0x273>
+mov    %rdx,%rdi
+movaps %xmm8,%xmm1
+movaps %xmm8,%xmm0
+inc    %rax
+call   1657 <exp@plt+0x587>
+jmp    1329 <exp@plt+0x259>
+mov    0xdde(%rip),%rax        # 2128 <exp@plt+0x1058>
+push   $0x1
+movsd  %xmm8,0x2d73(%rip)        # 40c8 <stderr@GLIBC_2.2.5+0x48>
+pop    %rdi
+mov    %rax,0x2d7b(%rip)        # 40d8 <stderr@GLIBC_2.2.5+0x58>
+movsd  %xmm7,0x2d6b(%rip)        # 40d0 <stderr@GLIBC_2.2.5+0x50>
+cmp    %r14,%rdi
+jg     1374 <exp@plt+0x2a4>
+call   161c <exp@plt+0x54c>
+inc    %rdi
+jmp    1365 <exp@plt+0x295>
+movsd  0xd84(%rip),%xmm0        # 2100 <exp@plt+0x1030>
+push   $0x1
+movl   $0x2,0x2d20(%rip)        # 40a8 <stderr@GLIBC_2.2.5+0x28>
+pop    %rax
+movl   $0x3,0x2d11(%rip)        # 40a4 <stderr@GLIBC_2.2.5+0x24>
+cmp    %r15,%rax
+jg     13be <exp@plt+0x2ee>
+mov    %rax,0x18(%rsp)
+call   1090 <log@plt>
+divsd  0x2d46(%rip),%xmm0        # 40f0 <stderr@GLIBC_2.2.5+0x70>
+call   10d0 <exp@plt>
+call   10c0 <sqrt@plt>
+mov    0x18(%rsp),%rax
+inc    %rax
+jmp    1393 <exp@plt+0x2c3>
+xor    %edi,%edi
+call   10a0 <time@plt>
+mov    %rax,0x18(%rsp)
+push   $0xa
+pop    %rdi
+call   1030 <putchar@plt>
+mov    0x18(%rsp),%rcx
+sub    %r12,%rcx
+test   %rcx,%rcx
+jg     13ed <exp@plt+0x31d>
+lea    0xc41(%rip),%rdi        # 2027 <exp@plt+0xf57>
+call   1050 <puts@plt>
+jmp    145d <exp@plt+0x38d>
+mov    %rcx,0x18(%rsp)
+lea    0xc5d(%rip),%rdi        # 2056 <exp@plt+0xf86>
+xor    %eax,%eax
+mov    %rbx,%rsi
+push   $0x1
+pop    %rdx
+call   1070 <printf@plt>
+mov    0x18(%rsp),%rcx
+cvtsi2sd %rbx,%xmm1
+mulsd  0xd18(%rip),%xmm1        # 2130 <exp@plt+0x1060>
+lea    0xc9c(%rip),%rdi        # 20bb <exp@plt+0xfeb>
+cvtsi2ss %rcx,%xmm0
+cvtss2sd %xmm0,%xmm0
+divsd  %xmm0,%xmm1
+cvtsd2ss %xmm1,%xmm1
+comiss 0xbcd(%rip),%xmm1        # 2004 <exp@plt+0xf34>
+cvtss2sd %xmm1,%xmm0
+jb     144c <exp@plt+0x37c>
+lea    0xc42(%rip),%rdi        # 2086 <exp@plt+0xfb6>
+divsd  0xcec(%rip),%xmm0        # 2138 <exp@plt+0x1068>
+mov    $0x1,%al
+call   1070 <printf@plt>
+test   %ebp,%ebp
+jne    1194 <exp@plt+0xc4>
+jmp    1460 <exp@plt+0x390>
+push   $0x1
+pop    %rbp
+mov    0x28(%rsp),%rax
+0x28,%rax
+je     1475 <exp@plt+0x3a5>
+call   1060 <__stack_chk_fail@plt>
+add    $0x38,%rsp
+xchg   %eax,%ebp
+pop    %rbx
+pop    %rbp
+pop    %r12
+pop    %r13
+pop    %r14
+pop    %r15
+ret
+cs nopw 0x0(%rax,%rax,1)
+nop
+endbr64
+xor    %ebp,%ebp
+mov    %rdx,%r9
+pop    %rsi
+mov    %rsp,%rdx
+and    $0xfffffffffffffff0,%rsp
+push   %rax
+push   %rsp
+xor    %r8d,%r8d
+xor    %ecx,%ecx
+lea    -0x3cf(%rip),%rdi        # 10e0 <exp@plt+0x10>
+call   *0x2b0b(%rip)        # 3fc0 <exp@plt+0x2ef0>
+hlt
+cs nopw 0x0(%rax,%rax,1)
+lea    0x2ba1(%rip),%rdi        # 4068 <exp@plt+0x2f98>
+lea    0x2b9a(%rip),%rax        # 4068 <exp@plt+0x2f98>
+cmp    %rdi,%rax
+je     14e8 <exp@plt+0x418>
+mov    0x2aee(%rip),%rax        # 3fc8 <exp@plt+0x2ef8>
+test   %rax,%rax
+je     14e8 <exp@plt+0x418>
+jmp    *%rax
+nopl   0x0(%rax)
+ret
+nopl   0x0(%rax)
+lea    0x2b71(%rip),%rdi        # 4068 <exp@plt+0x2f98>
+lea    0x2b6a(%rip),%rsi        # 4068 <exp@plt+0x2f98>
+sub    %rdi,%rsi
+mov    %rsi,%rax
+shr    $0x3f,%rsi
+sar    $0x3,%rax
+add    %rax,%rsi
+sar    $1,%rsi
+je     1528 <exp@plt+0x458>
+mov    0x2abd(%rip),%rax        # 3fd8 <exp@plt+0x2f08>
+test   %rax,%rax
+je     1528 <exp@plt+0x458>
+jmp    *%rax
+nopw   0x0(%rax,%rax,1)
+ret
+nopl   0x0(%rax)
+endbr64
+cmpb   $0x0,0x2b4d(%rip)        # 4088 <stderr@GLIBC_2.2.5+0x8>
+jne    1570 <exp@plt+0x4a0>
+push   %rbp
+cmpq   $0x0,0x2a9a(%rip)        # 3fe0 <exp@plt+0x2f10>
+mov    %rsp,%rbp
+je     1558 <exp@plt+0x488>
+mov    0x2b0e(%rip),%rdi        # 4060 <exp@plt+0x2f90>
+call   *0x2a88(%rip)        # 3fe0 <exp@plt+0x2f10>
+call   14c0 <exp@plt+0x3f0>
+movb   $0x1,0x2b24(%rip)        # 4088 <stderr@GLIBC_2.2.5+0x8>
+pop    %rbp
+ret
+cs nopw 0x0(%rax,%rax,1)
+ret
+data16 cs nopw 0x0(%rax,%rax,1)
+nopl   0x0(%rax)
+endbr64
+jmp    14f0 <exp@plt+0x420>
+movsd  0x8(%rdi),%xmm1
+movsd  0x10(%rdi),%xmm0
+push   $0x6
+movsd  0x18(%rdi),%xmm3
+movsd  0x20(%rdi),%xmm2
+movsd  0x2b51(%rip),%xmm5        # 40f8 <stderr@GLIBC_2.2.5+0x78>
+movsd  0x2b39(%rip),%xmm6        # 40e8 <stderr@GLIBC_2.2.5+0x68>
+pop    %rax
+addsd  %xmm0,%xmm1
+addsd  %xmm3,%xmm1
+subsd  %xmm2,%xmm1
+mulsd  %xmm5,%xmm1
+addsd  %xmm1,%xmm0
+movaps %xmm1,%xmm4
+subsd  %xmm3,%xmm0
+addsd  %xmm2,%xmm0
+mulsd  %xmm5,%xmm0
+subsd  %xmm0,%xmm4
+addsd  %xmm3,%xmm4
+addsd  %xmm2,%xmm4
+movaps %xmm4,%xmm3
+movaps %xmm0,%xmm4
+mulsd  %xmm5,%xmm3
+subsd  %xmm1,%xmm4
+addsd  %xmm3,%xmm4
+addsd  %xmm4,%xmm2
+divsd  %xmm6,%xmm2
+dec    %eax
+jne    15b0 <exp@plt+0x4e0>
+movl   $0x6,0x2aa1(%rip)        # 40a8 <stderr@GLIBC_2.2.5+0x28>
+movsd  %xmm1,0x8(%rdi)
+movsd  %xmm0,0x10(%rdi)
+movsd  %xmm3,0x18(%rdi)
+movsd  %xmm2,0x20(%rdi)
+ret
+movslq 0x2a81(%rip),%rsi        # 40a4 <stderr@GLIBC_2.2.5+0x24>
+lea    0x2a96(%rip),%rax        # 40c0 <stderr@GLIBC_2.2.5+0x40>
+movslq 0x2a77(%rip),%rcx        # 40a8 <stderr@GLIBC_2.2.5+0x28>
+movslq 0x2a68(%rip),%rdx        # 40a0 <stderr@GLIBC_2.2.5+0x20>
+movsd  (%rax,%rsi,8),%xmm0
+movsd  %xmm0,(%rax,%rcx,8)
+movsd  (%rax,%rdx,8),%xmm0
+movsd  %xmm0,(%rax,%rsi,8)
+movsd  (%rax,%rcx,8),%xmm0
+movsd  %xmm0,(%rax,%rdx,8)
+ret
+addsd  %xmm1,%xmm0
+movsd  0x2a95(%rip),%xmm2        # 40f8 <stderr@GLIBC_2.2.5+0x78>
+mulsd  %xmm2,%xmm0
+addsd  %xmm0,%xmm1
+mulsd  %xmm2,%xmm1
+addsd  %xmm0,%xmm1
+divsd  0x2a6d(%rip),%xmm1        # 40e8 <stderr@GLIBC_2.2.5+0x68>
+movsd  %xmm1,(%rdi)
+ret
