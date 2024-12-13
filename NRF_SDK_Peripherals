@@ -1,0 +1,1334 @@
+************  A --> DISSASSEMBLED
+B --> DECOMPILED   ************
+
+I. GPIOTE
+
+1.) nrf_drv_ppi_init:
+
+ret_code_t nrf_drv_ppi_init(void)
+{
+    if (m_drv_state == NRFX_DRV_STATE_UNINITIALIZED)
+    {
+        m_drv_state = NRFX_DRV_STATE_INITIALIZED;
+    }
+    else
+    {
+        return NRF_ERROR_MODULE_ALREADY_INITIALIZED;
+    }
+    return NRF_SUCCESS;
+}
+
+
+  A:                              **************************************************************
+                             *                          FUNCTION                          *
+                             **************************************************************
+                             ret_code_t nrf_drv_ppi_init(void)
+                               assume LRset = 0x0
+                               assume TMode = 0x1
+             ret_code_t        r0:4           <RETURN>
+                             nrf_drv_ppi_init                                XREF[3]:     Entry Point(*), main:00000b10(c), 
+                                                                                          .debug_frame::000000fc(*)  
+        00000370 03 4b           ldr        r3,[DAT_00000380]                                = 20000098h
+
+  B: /* WARNING: Unknown calling convention */
+    
+    ret_code_t nrf_drv_ppi_init(void)
+    
+    {
+      if (m_drv_state == NRFX_DRV_STATE_UNINITIALIZED) {
+        m_drv_state = NRFX_DRV_STATE_INITIALIZED;
+        return 0;
+      }
+      return 0x85;
+    }
+
+2.) ???????????????????????????????????????????????????????????????
+
+II.) UART
+
+1.) bsp_board_init
+
+void bsp_board_init(uint32_t init_flags)
+{
+    #if defined(BOARDS_WITH_USB_DFU_TRIGGER) && defined(BOARD_PCA10059)
+    (void) nrf_dfu_trigger_usb_init();
+    #endif
+
+    #if LEDS_NUMBER > 0
+    if (init_flags & BSP_INIT_LEDS)
+    {
+        bsp_board_leds_init();
+    }
+    #endif //LEDS_NUMBER > 0
+
+    #if BUTTONS_NUMBER > 0
+    if (init_flags & BSP_INIT_BUTTONS)
+    {
+        bsp_board_buttons_init();
+    }
+    #endif //BUTTONS_NUMBER > 0
+}
+
+
+  A:                              **************************************************************
+                             *                          FUNCTION                          *
+                             **************************************************************
+                             void bsp_board_init(uint32_t init_flags)
+                               assume LRset = 0x0
+                               assume TMode = 0x1
+             void              <VOID>         <RETURN>
+             uint32_t          r0:4           init_flags
+                             bsp_board_init                                  XREF[5]:     Entry Point(*), 
+                                                                                          bsp_init:000048ee(c), 
+                                                                                          bsp_init:00004912(c), 
+                                                                                          bsp_init:0000491e(c), 
+                                                                                          .debug_frame::0000059c(*)  
+        00000da0 c2 07           lsls       r2,init_flags,#0x1f
+
+  B: 
+      void bsp_board_init(uint32_t init_flags)
+      
+      {
+        if ((int)(init_flags << 0x1f) < 0) {
+          _DAT_50000734 = 3;
+          _DAT_50000738 = 3;
+          _DAT_5000073c = 3;
+          _DAT_50000740 = 3;
+          _DAT_50000508 = 0x10000;
+        }
+        if ((int)(init_flags << 0x1e) < 0) {
+          _DAT_5000072c = 0xc;
+          _DAT_50000730 = 0xc;
+          _DAT_50000760 = 0xc;
+          _DAT_50000764 = 0xc;
+        }
+        return;
+      }
+
+
+
+2.) ???????????????????????????????????????????????????????????????????????
+
+
+III. USBD_BLE_UART
+
+1.) log_init
+
+/** @brief Function for initializing the nrf_log module. */
+static void log_init(void)
+{
+    ret_code_t err_code = NRF_LOG_INIT(NULL);
+    APP_ERROR_CHECK(err_code);
+
+    NRF_LOG_DEFAULT_BACKENDS_INIT();
+}
+
+
+  A:                               **************************************************************
+                             *                          FUNCTION                          *
+                             **************************************************************
+                             ret_code_t nrf_log_init(nrf_log_timestamp_func_t timesta
+                               assume LRset = 0x0
+                               assume TMode = 0x1
+             ret_code_t        r0:4           <RETURN>
+             nrf_log_timest    r0:4           timestamp_func
+             uint32_t          r1:4           timestamp_freq
+                             nrf_log_init                                    XREF[3]:     Entry Point(*), main:000319aa(c), 
+                                                                                          .debug_frame::0000013c(*)  
+        00027550 06 4b           ldr        r3,[DAT_0002756c]                                = 20002DB4h
+
+
+  B: 
+
+      ret_code_t nrf_log_init(nrf_log_timestamp_func_t timestamp_func,uint32_t timestamp_freq)
+
+      {
+        ret_code_t rVar1;
+        
+        m_log_data.autoflush = false;
+        rVar1 = nrf_memobj_pool_init(&log_mempool);
+        if (rVar1 == 0) {
+          nrf_ringbuf_init(&m_log_push_ringbuf);
+        }
+        return rVar1;
+      }
+
+
+2.) nrf_drv_clock_init 
+
+
+ret_code_t nrf_drv_clock_init(void)
+{
+    ret_code_t err_code = NRF_SUCCESS;
+    if (m_clock_cb.module_initialized)
+    {
+        err_code = NRF_ERROR_MODULE_ALREADY_INITIALIZED;
+    }
+    else
+    {
+        m_clock_cb.p_hf_head      = NULL;
+        m_clock_cb.hfclk_requests = 0;
+        m_clock_cb.p_lf_head      = NULL;
+        m_clock_cb.lfclk_requests = 0;
+        err_code = nrfx_clock_init(clock_irq_handler);
+#ifdef SOFTDEVICE_PRESENT
+        if (!nrf_sdh_is_enabled())
+#endif
+        {
+            nrfx_clock_enable();
+        }
+
+#if CALIBRATION_SUPPORT
+        m_clock_cb.cal_state = CAL_STATE_IDLE;
+#endif
+
+        m_clock_cb.module_initialized = true;
+    }
+
+    if (nrf_wdt_started())
+    {
+        m_clock_cb.lfclk_on = true;
+    }
+
+    NRF_LOG_INFO("Function: %s, error code: %s.",
+                 (uint32_t)__func__,
+                 (uint32_t)NRF_LOG_ERROR_STRING_GET(err_code));
+    return err_code;
+}
+
+
+  A:                              **************************************************************
+                             *                          FUNCTION                          *
+                             **************************************************************
+                             ret_code_t nrf_drv_clock_init(void)
+                               assume LRset = 0x0
+                               assume TMode = 0x1
+             ret_code_t        r0:4           <RETURN>
+                             nrf_drv_clock_init                              XREF[3]:     Entry Point(*), main:000319f4(c), 
+                                                                                          .debug_frame::00001e88(*)  
+        0002cea4 38 b5           push       {r3,r4,r5,lr}
+
+
+
+  B:
+
+    ret_code_t nrf_drv_clock_init(void)
+
+    {
+      _Bool _Var1;
+      nrf_drv_clock_handler_item_t *pnVar2;
+      nrfx_err_t nVar3;
+      
+      pnVar2 = (nrf_drv_clock_handler_item_t *)(uint)m_clock_cb.module_initialized;
+      if (pnVar2 == (nrf_drv_clock_handler_item_t *)0x0) {
+        m_clock_cb.hfclk_requests = (uint32_t)pnVar2;
+        m_clock_cb.p_hf_head = pnVar2;
+        m_clock_cb.lfclk_requests = (uint32_t)pnVar2;
+        m_clock_cb.p_lf_head = pnVar2;
+        nVar3 = nrfx_clock_init((nrfx_clock_event_handler_t)0x2cd71);
+        _Var1 = nrf_sdh_is_enabled();
+        if (!_Var1) {
+          nrfx_clock_enable();
+        }
+        m_clock_cb.module_initialized = true;
+      }
+      else {
+        nVar3 = 0x85;
+      }
+      if (_DAT_40010400 != 0) {
+        m_clock_cb.lfclk_on = true;
+      }
+      return nVar3;
+    }
+
+
+3.) app_usbd_init
+
+
+ret_code_t app_usbd_init(app_usbd_config_t const * p_config)
+{
+    ASSERT(nrf_drv_clock_init_check());
+    ret_code_t ret;
+
+#if (APP_USBD_CONFIG_EVENT_QUEUE_ENABLE) || defined(__SDK_DOXYGEN__)
+    ret = NRF_ATFIFO_INIT(m_event_queue);
+    if (NRF_SUCCESS != ret)
+    {
+        return NRF_ERROR_INTERNAL;
+    }
+#endif
+
+    /* This is called at the beginning to secure multiple calls to init function */
+    ret = nrf_drv_usbd_init(app_usbd_event_handler);
+    if (NRF_SUCCESS != ret)
+    {
+        return ret;
+    }
+
+    /* Clear the variables */
+    m_sustate = SUSTATE_STOPPED;
+    m_p_first_cinst = NULL;
+    m_p_first_sof_cinst = NULL;
+    memset(m_epin_conf , 0, sizeof(m_epin_conf ));
+    memset(m_epout_conf, 0, sizeof(m_epout_conf));
+    /* Save the new configuration */
+    if (p_config == NULL)
+    {
+        m_current_conf = m_default_conf;
+    }
+    else
+    {
+        m_current_conf = *p_config;
+    }
+
+#if (!(APP_USBD_CONFIG_EVENT_QUEUE_ENABLE))
+    if(m_current_conf.ev_handler == NULL)
+    {
+        m_current_conf.ev_handler = m_default_conf.ev_handler;
+    }
+#endif
+
+#if APP_USBD_CONFIG_POWER_EVENTS_PROCESS
+    ret = nrf_drv_power_init(NULL);
+    if ((ret != NRF_SUCCESS) && (ret != NRF_ERROR_MODULE_ALREADY_INITIALIZED))
+    {
+        /* This should never happen */
+        APP_ERROR_HANDLER(ret);
+    }
+#endif
+
+    /*Pin core class to required endpoints*/
+    uint8_t iface_idx;
+    app_usbd_class_iface_conf_t const * p_iface;
+    app_usbd_class_inst_t const * const p_inst = app_usbd_core_instance_access();
+    iface_idx = 0;
+    while ((p_iface = app_usbd_class_iface_get(p_inst, iface_idx++)) != NULL)
+    {
+        uint8_t ep_idx = 0;
+        app_usbd_class_ep_conf_t const * p_ep;
+        while ((p_ep = app_usbd_class_iface_ep_get(p_iface, ep_idx++)) != NULL)
+        {
+            app_usbd_ep_instance_set(app_usbd_class_ep_address_get(p_ep), p_inst);
+        }
+    }
+
+    /* Successfully attached */
+    const app_usbd_evt_t evt_data = {
+        .type = APP_USBD_EVT_INST_APPEND
+    };
+
+    ret = class_event_handler(p_inst, (app_usbd_complex_evt_t const *)(&evt_data));
+    if (NRF_SUCCESS != ret)
+    {
+        UNUSED_RETURN_VALUE(nrf_drv_usbd_uninit());
+        return ret;
+    }
+
+    return NRF_SUCCESS;
+}
+
+
+
+  A:                               **************************************************************
+                             *                          FUNCTION                          *
+                             **************************************************************
+                             ret_code_t app_usbd_init(app_usbd_config_t * p_config)
+                               assume LRset = 0x0
+                               assume TMode = 0x1
+             ret_code_t        r0:4           <RETURN>
+             app_usbd_confi    r0:4           p_config
+             app_usbd_evt_t    Stack[-0x24]:1 evt_data                                XREF[1]:     000290fc(W)  
+                             app_usbd_init                                   XREF[3]:     Entry Point(*), main:00031a14(c), 
+                                                                                          .debug_frame::000008c8(*)  
+        0002902c 2d e9 f0 47     push       {r4,r5,r6,r7,r8,r9,r10,lr}
+
+
+  B: 
+
+      ret_code_t app_usbd_init(app_usbd_config_t *p_config)
+
+      {
+        ret_code_t rVar1;
+        app_usbd_class_inst_t *paVar2;
+        uint uVar3;
+        byte *pbVar4;
+        byte *pbVar6;
+        int iVar7;
+        app_usbd_evt_t evt_data;
+        byte *pbVar5;
+        
+        rVar1 = nrf_atfifo_init(&m_event_queue_inst,m_event_queue_data,0x108,8);
+        if (rVar1 != 0) {
+          return 3;
+        }
+        paVar2 = (app_usbd_class_inst_t *)nrfx_usbd_init((nrfx_usbd_event_handler_t)0x28dad);
+        if (paVar2 == (app_usbd_class_inst_t *)0x0) {
+          m_sustate = SUSTATE_STOPPED;
+          m_p_first_cinst = paVar2;
+          m_p_first_sof_cinst = paVar2;
+          memset(m_epin_conf,0,0x48);
+          memset(m_epout_conf,0,0x48);
+          if (p_config == (app_usbd_config_t *)0x0) {
+            m_current_conf._8_4_ = m_current_conf._8_4_ & 0xffffff00;
+            m_current_conf.ev_isr_handler = (_func_void_app_usbd_internal_evt_t_ptr__Bool *)0x0;
+            m_current_conf.ev_state_proc = (_func_void_app_usbd_event_type_t *)0x0;
+          }
+          else {
+            m_current_conf.ev_isr_handler = p_config->ev_isr_handler;
+            m_current_conf.ev_state_proc = p_config->ev_state_proc;
+            m_current_conf.enable_sof = p_config->enable_sof;
+            m_current_conf._9_3_ = *(undefined3 *)&p_config->field_0x9;
+          }
+          rVar1 = nrf_drv_power_init((nrf_drv_power_config_t *)0x0);
+          if ((rVar1 != 0) && (rVar1 != 0x85)) {
+            app_error_handler_bare(rVar1);
+          }
+          iVar7 = 0x34615;
+          do {
+            while (*(char *)(iVar7 + 1) == '\0') {
+      LAB_000290f2:
+              iVar7 = iVar7 + 3;
+              if (iVar7 == 0x34618) goto LAB_000290fa;
+            }
+            pbVar6 = (byte *)(iVar7 + 1 + (uint)*(byte *)(iVar7 + 2) +
+                             (uint)(byte)(*(char *)(iVar7 + 1) - 1));
+            pbVar5 = (byte *)((uint)*(byte *)(iVar7 + 2) + iVar7);
+            do {
+              while( true ) {
+                pbVar4 = pbVar5 + 1;
+                uVar3 = *pbVar5 & 0xf;
+                if ((int)((uint)*pbVar5 << 0x18) < 0) break;
+                m_epout_conf[uVar3].p_cinst = (app_usbd_class_inst_t *)&app_usbd_core_inst;
+                m_epout_conf[uVar3].event_handler = app_usbd_core_event_handler;
+                pbVar5 = pbVar4;
+                if (pbVar6 == pbVar4) goto LAB_000290f2;
+              }
+              m_epin_conf[uVar3].p_cinst = (app_usbd_class_inst_t *)&app_usbd_core_inst;
+              m_epin_conf[uVar3].event_handler = app_usbd_core_event_handler;
+              pbVar5 = pbVar4;
+            } while (pbVar6 != pbVar4);
+            iVar7 = iVar7 + 3;
+          } while (iVar7 != 0x34618);
+      LAB_000290fa:
+          evt_data.type = APP_USBD_EVT_FIRST_APP;
+          paVar2 = (app_usbd_class_inst_t *)
+                   app_usbd_core_event_handler
+                             (&app_usbd_core_inst.base,(app_usbd_complex_evt_t *)&evt_data);
+          if (paVar2 != (app_usbd_class_inst_t *)0x0) {
+            nrfx_usbd_uninit();
+          }
+        }
+        return (ret_code_t)paVar2;
+      }
+
+
+
+4.)  app_usbd_class_append
+
+
+ret_code_t app_usbd_class_append(app_usbd_class_inst_t const * p_cinst)
+{
+    ASSERT(NULL != p_cinst);
+    ASSERT(NULL != p_cinst->p_class_methods);
+    ASSERT(NULL != p_cinst->p_class_methods->event_handler);
+    ASSERT(NULL == app_usbd_class_data_access(p_cinst)->p_next);
+
+    /* This should be only called if USBD is disabled
+     * We simply assume that USBD is enabled if its interrupts are */
+    ASSERT(!nrf_drv_usbd_is_enabled() && nrf_drv_usbd_is_initialized());
+
+    /* Check if all required endpoints are available
+     * Checking is splitted from setting to avoid situation that anything
+     * is modified and then operation finishes with error */
+    uint8_t iface_idx;
+    app_usbd_class_iface_conf_t const * p_iface;
+
+    iface_idx = 0;
+    while (NULL != (p_iface = app_usbd_class_iface_get(p_cinst, iface_idx++)))
+    {
+        uint8_t ep_idx = 0;
+        app_usbd_class_ep_conf_t const * p_ep;
+        while (NULL != (p_ep = app_usbd_class_iface_ep_get(p_iface, ep_idx++)))
+        {
+            if (NULL != app_usbd_ep_instance_get(app_usbd_class_ep_address_get(p_ep)))
+            {
+                return NRF_ERROR_BUSY;
+            }
+        }
+    }
+
+    /* Connecting all required endpoints */
+    iface_idx = 0;
+    while (NULL != (p_iface = app_usbd_class_iface_get(p_cinst, iface_idx++)))
+    {
+        uint8_t ep_idx = 0;
+        app_usbd_class_ep_conf_t const * p_ep;
+        while (NULL != (p_ep = app_usbd_class_iface_ep_get(p_iface, ep_idx++)))
+        {
+            app_usbd_ep_instance_set(app_usbd_class_ep_address_get(p_ep), p_cinst);
+        }
+    }
+
+    /* Adding pointer to this instance to the end of the chain */
+    app_usbd_class_inst_t const * * pp_last = &m_p_first_cinst;
+    while (NULL != (*pp_last))
+    {
+        ASSERT((*pp_last) != p_cinst);
+        pp_last = &(app_usbd_class_data_access(*pp_last)->p_next);
+    }
+    (*pp_last) = p_cinst;
+
+    /* Successfully attached */
+    const app_usbd_evt_t evt_data = {.type = APP_USBD_EVT_INST_APPEND };
+    return class_event_handler(p_cinst, (app_usbd_complex_evt_t const *)(&evt_data));
+}
+
+
+
+  A:                               **************************************************************
+                             *                          FUNCTION                          *
+                             **************************************************************
+                             ret_code_t app_usbd_class_append(app_usbd_class_inst_t *
+                               assume LRset = 0x0
+                               assume TMode = 0x1
+             ret_code_t        r0:4           <RETURN>
+             app_usbd_class    r0:4           p_cinst
+             app_usbd_evt_t    Stack[-0x24]:1 evt_data                                XREF[1]:     000293aa(W)  
+                             app_usbd_class_append                           XREF[3]:     Entry Point(*), main:00031a20(c), 
+                                                                                          .debug_frame::000009e8(*)  
+        000292ac 2d e9 f0 43     push       {r4,r5,r6,r7,r8,r9,lr}
+
+
+  B:
+
+
+      ret_code_t app_usbd_class_append(app_usbd_class_inst_t *p_cinst)
+
+      {
+        byte bVar1;
+        int iVar2;
+        ret_code_t rVar3;
+        undefined *puVar4;
+        app_usbd_class_inst_t **ppaVar5;
+        uint uVar6;
+        uint uVar7;
+        app_usbd_class_inst_t *paVar8;
+        undefined *puVar9;
+        uint uVar10;
+        uint uVar11;
+        app_usbd_evt_t evt_data;
+        
+        bVar1 = (p_cinst->iface).cnt;
+        uVar10 = (uint)bVar1;
+        if (uVar10 != 0) {
+          puVar9 = &p_cinst->field_0x9;
+          puVar4 = puVar9;
+          do {
+            uVar6 = 0;
+            while ((byte)puVar4[1] != uVar6) {
+              while( true ) {
+                iVar2 = (byte)puVar4[2] + uVar6;
+                if (-1 < (char)puVar4[(byte)puVar4[2] + uVar6]) break;
+                uVar6 = uVar6 + 1;
+                if (m_epin_conf[(byte)puVar4[iVar2] & 0xf].p_cinst != (app_usbd_class_inst_t *)0x0) {
+                  return 0x11;
+                }
+                if ((byte)puVar4[1] == uVar6) goto LAB_00029320;
+              }
+              uVar6 = uVar6 + 1;
+              if (m_epout_conf[(byte)puVar4[iVar2] & 0xf].p_cinst != (app_usbd_class_inst_t *)0x0) {
+                return 0x11;
+              }
+            }
+      LAB_00029320:
+            puVar4 = puVar4 + 3;
+          } while (puVar4 != (undefined *)((int)&p_cinst[1].p_data + (short)(bVar1 - 1 & 0xff) * 3));
+          uVar11 = 0;
+          uVar6 = 0;
+          do {
+            if (puVar9[uVar6 * 3 + 1] != '\0') {
+              uVar10 = 0;
+              uVar7 = 0;
+              do {
+                while( true ) {
+                  iVar2 = uVar7 + uVar6 * 3;
+                  uVar7 = (byte)puVar9[(uint)(byte)puVar9[uVar6 * 3 + 2] + iVar2] & 0xf;
+                  if (-1 < (char)puVar9[(uint)(byte)puVar9[uVar6 * 3 + 2] + iVar2]) break;
+                  m_epin_conf[uVar7].p_cinst = p_cinst;
+                  m_epin_conf[uVar7].event_handler = p_cinst->p_class_methods->event_handler;
+                  uVar10 = uVar10 + 1;
+                  uVar7 = uVar10 & 0xff;
+                  if ((byte)puVar9[uVar6 * 3 + 1] <= uVar7) goto LAB_00029386;
+                }
+                m_epout_conf[uVar7].p_cinst = p_cinst;
+                m_epout_conf[uVar7].event_handler = p_cinst->p_class_methods->event_handler;
+                uVar10 = uVar10 + 1;
+                uVar7 = uVar10 & 0xff;
+              } while (uVar7 < (byte)puVar9[uVar6 * 3 + 1]);
+      LAB_00029386:
+              uVar10 = (uint)(p_cinst->iface).cnt;
+            }
+            uVar11 = uVar11 + 1;
+            uVar6 = uVar11 & 0xff;
+          } while (uVar6 < uVar10);
+        }
+        ppaVar5 = &m_p_first_cinst;
+        paVar8 = m_p_first_cinst;
+        while (paVar8 != (app_usbd_class_inst_t *)0x0) {
+          ppaVar5 = &paVar8->p_data->p_next;
+          paVar8 = ((app_usbd_class_data_t *)ppaVar5)->p_next;
+        }
+        ((app_usbd_class_data_t *)ppaVar5)->p_next = p_cinst;
+        evt_data.type = APP_USBD_EVT_FIRST_APP;
+        rVar3 = (*p_cinst->p_class_methods->event_handler)(p_cinst,(app_usbd_complex_evt_t *)&evt_data);
+        return rVar3;
+      }
+
+
+5.) ble_nus_init
+
+
+uint32_t ble_nus_init(ble_nus_t * p_nus, ble_nus_init_t const * p_nus_init)
+{
+    ret_code_t            err_code;
+    ble_uuid_t            ble_uuid;
+    ble_uuid128_t         nus_base_uuid = NUS_BASE_UUID;
+    ble_add_char_params_t add_char_params;
+
+    VERIFY_PARAM_NOT_NULL(p_nus);
+    VERIFY_PARAM_NOT_NULL(p_nus_init);
+
+    // Initialize the service structure.
+    p_nus->data_handler = p_nus_init->data_handler;
+
+    /**@snippet [Adding proprietary Service to the SoftDevice] */
+    // Add a custom base UUID.
+    err_code = sd_ble_uuid_vs_add(&nus_base_uuid, &p_nus->uuid_type);
+    VERIFY_SUCCESS(err_code);
+
+    ble_uuid.type = p_nus->uuid_type;
+    ble_uuid.uuid = BLE_UUID_NUS_SERVICE;
+
+    // Add the service.
+    err_code = sd_ble_gatts_service_add(BLE_GATTS_SRVC_TYPE_PRIMARY,
+                                        &ble_uuid,
+                                        &p_nus->service_handle);
+    /**@snippet [Adding proprietary Service to the SoftDevice] */
+    VERIFY_SUCCESS(err_code);
+
+    // Add the RX Characteristic.
+    memset(&add_char_params, 0, sizeof(add_char_params));
+    add_char_params.uuid                     = BLE_UUID_NUS_RX_CHARACTERISTIC;
+    add_char_params.uuid_type                = p_nus->uuid_type;
+    add_char_params.max_len                  = BLE_NUS_MAX_RX_CHAR_LEN;
+    add_char_params.init_len                 = sizeof(uint8_t);
+    add_char_params.is_var_len               = true;
+    add_char_params.char_props.write         = 1;
+    add_char_params.char_props.write_wo_resp = 1;
+
+    add_char_params.read_access  = SEC_OPEN;
+    add_char_params.write_access = SEC_OPEN;
+
+    err_code = characteristic_add(p_nus->service_handle, &add_char_params, &p_nus->rx_handles);
+    if (err_code != NRF_SUCCESS)
+    {
+        return err_code;
+    }
+
+    // Add the TX Characteristic.
+    /**@snippet [Adding proprietary characteristic to the SoftDevice] */
+    memset(&add_char_params, 0, sizeof(add_char_params));
+    add_char_params.uuid              = BLE_UUID_NUS_TX_CHARACTERISTIC;
+    add_char_params.uuid_type         = p_nus->uuid_type;
+    add_char_params.max_len           = BLE_NUS_MAX_TX_CHAR_LEN;
+    add_char_params.init_len          = sizeof(uint8_t);
+    add_char_params.is_var_len        = true;
+    add_char_params.char_props.notify = 1;
+
+    add_char_params.read_access       = SEC_OPEN;
+    add_char_params.write_access      = SEC_OPEN;
+    add_char_params.cccd_write_access = SEC_OPEN;
+
+    return characteristic_add(p_nus->service_handle, &add_char_params, &p_nus->tx_handles);
+    /**@snippet [Adding proprietary characteristic to the SoftDevice] */
+}
+
+
+uint32_t ble_nus_data_send(ble_nus_t * p_nus,
+                           uint8_t   * p_data,
+                           uint16_t  * p_length,
+                           uint16_t    conn_handle)
+{
+    ret_code_t                 err_code;
+    ble_gatts_hvx_params_t     hvx_params;
+    ble_nus_client_context_t * p_client;
+
+    VERIFY_PARAM_NOT_NULL(p_nus);
+
+    err_code = blcm_link_ctx_get(p_nus->p_link_ctx_storage, conn_handle, (void *) &p_client);
+    VERIFY_SUCCESS(err_code);
+
+    if ((conn_handle == BLE_CONN_HANDLE_INVALID) || (p_client == NULL))
+    {
+        return NRF_ERROR_NOT_FOUND;
+    }
+
+    if (!p_client->is_notification_enabled)
+    {
+        return NRF_ERROR_INVALID_STATE;
+    }
+
+    if (*p_length > BLE_NUS_MAX_DATA_LEN)
+    {
+        return NRF_ERROR_INVALID_PARAM;
+    }
+
+    memset(&hvx_params, 0, sizeof(hvx_params));
+
+    hvx_params.handle = p_nus->tx_handles.value_handle;
+    hvx_params.p_data = p_data;
+    hvx_params.p_len  = p_length;
+    hvx_params.type   = BLE_GATT_HVX_NOTIFICATION;
+
+    return sd_ble_gatts_hvx(conn_handle, &hvx_params);
+}
+
+
+
+
+
+  A:                              **************************************************************
+                             *                          FUNCTION                          *
+                             **************************************************************
+                             uint32_t ble_nus_init(ble_nus_t * p_nus, ble_nus_init_t 
+                               assume LRset = 0x0
+                               assume TMode = 0x1
+             uint32_t          r0:4           <RETURN>
+             ble_nus_t *       r0:4           p_nus
+             ble_nus_init_t    r1:4           p_nus_init
+             ble_add_char_p    Stack[-0x30]   add_char_params                         XREF[2,12]:  000331f6(W), 
+                                                                                                   0003323e(W), 
+                                                                                                   000331e2(W), 
+                                                                                                   0003323a(W), 
+                                                                                                   000331fa(W), 
+                                                                                                   00033212(W), 
+                                                                                                   000331c6(R), 
+                                                                                                   000331e8(W), 
+                                                                                                   0003320e(R), 
+                                                                                                   0003322e(W), 
+                                                                                                   000331cc(W), 
+                                                                                                   00033228(W), 
+                                                                                                   000331ee(W), 
+                                                                                                   00033242(W)  
+             ble_uuid128_t     Stack[-0x40]   nus_base_uuid                           XREF[1]:     00033182(W)  
+             ble_uuid_t        Stack[-0x44]:4 ble_uuid                                XREF[1,1]:   000331b0(W), 
+                                                                                                   000331a8(W)  
+                             ble_nus_init                                    XREF[3]:     Entry Point(*), main:00031aa4(c), 
+                                                                                          .debug_frame::000043c8(*)  
+        00033174 70 b5           push       {r4,r5,r6,lr}
+
+
+
+  B:
+
+        uint32_t ble_nus_init(ble_nus_t *p_nus,ble_nus_init_t *p_nus_init)
+
+        {
+          uint32_t uVar1;
+          ble_uuid_t ble_uuid;
+          ble_uuid128_t nus_base_uuid;
+          ble_add_char_params_t add_char_params;
+          
+          nus_base_uuid.uuid128[0] = 0x9e;
+          nus_base_uuid.uuid128[1] = 0xca;
+          nus_base_uuid.uuid128[2] = 0xdc;
+          nus_base_uuid.uuid128[3] = '$';
+          nus_base_uuid.uuid128[4] = '\x0e';
+          nus_base_uuid.uuid128[5] = 0xe5;
+          nus_base_uuid.uuid128[6] = 0xa9;
+          nus_base_uuid.uuid128[7] = 0xe0;
+          nus_base_uuid.uuid128[8] = 0x93;
+          nus_base_uuid.uuid128[9] = 0xf3;
+          nus_base_uuid.uuid128[10] = 0xa3;
+          nus_base_uuid.uuid128[0xb] = 0xb5;
+          nus_base_uuid.uuid128[0xc] = '\0';
+          nus_base_uuid.uuid128[0xd] = '\0';
+          nus_base_uuid.uuid128[0xe] = '@';
+          nus_base_uuid.uuid128[0xf] = 'n';
+          if ((p_nus != (ble_nus_t *)0x0) && (p_nus_init != (ble_nus_init_t *)0x0)) {
+            p_nus->data_handler = p_nus_init->data_handler;
+            uVar1 = sd_ble_uuid_vs_add(&nus_base_uuid,&p_nus->uuid_type);
+            if (uVar1 == 0) {
+              ble_uuid.type = p_nus->uuid_type;
+              ble_uuid.uuid = 1;
+              uVar1 = sd_ble_gatts_service_add('\x01',&ble_uuid,&p_nus->service_handle);
+              if (uVar1 == 0) {
+                memset(&add_char_params,0,0x20);
+                add_char_params.read_access = SEC_OPEN;
+                add_char_params.uuid_type = p_nus->uuid_type;
+                add_char_params._12_2_ = add_char_params._12_2_ & 0xf300 | 0xc01;
+                add_char_params.write_access = SEC_OPEN;
+                add_char_params.uuid = 2;
+                add_char_params.max_len = 0xf4;
+                add_char_params.init_len = 1;
+                uVar1 = characteristic_add(p_nus->service_handle,&add_char_params,&p_nus->rx_handles);
+                if (uVar1 == 0) {
+                  memset(&add_char_params,0,0x20);
+                  add_char_params.max_len = 0xf4;
+                  add_char_params.init_len = 1;
+                  add_char_params._12_2_ = add_char_params._12_2_ & 0xef00 | 0x1001;
+                  add_char_params.uuid_type = p_nus->uuid_type;
+                  add_char_params.read_access = SEC_OPEN;
+                  add_char_params.uuid = 3;
+                  add_char_params.write_access = SEC_OPEN;
+                  add_char_params.cccd_write_access = SEC_OPEN;
+                  uVar1 = characteristic_add(p_nus->service_handle,&add_char_params,&p_nus->tx_handles);
+                }
+              }
+            }
+            return uVar1;
+          }
+          return 0xe;
+        }
+
+
+IV. QPSI_bootloader
+
+
+
+1.) nrfx_qspi_cinstr_xfer
+
+
+nrfx_err_t nrfx_qspi_cinstr_xfer(nrf_qspi_cinstr_conf_t const * p_config,
+                                 void const *                   p_tx_buffer,
+                                 void *                         p_rx_buffer)
+{
+    NRFX_ASSERT(m_cb.state != NRFX_DRV_STATE_UNINITIALIZED);
+
+    if (m_cb.is_busy)
+    {
+        return NRFX_ERROR_BUSY;
+    }
+
+    nrf_qspi_event_clear(NRF_QSPI, NRF_QSPI_EVENT_READY);
+    /* In some cases, only opcode should be sent. To prevent execution, set function code is
+     * surrounded by an if.
+     */
+    if (p_tx_buffer)
+    {
+        nrf_qspi_cinstrdata_set(NRF_QSPI, p_config->length, p_tx_buffer);
+    }
+
+    nrf_qspi_int_disable(NRF_QSPI, NRF_QSPI_INT_READY_MASK);
+
+    nrf_qspi_cinstr_transfer_start(NRF_QSPI, p_config);
+
+    if (qspi_ready_wait() == NRFX_ERROR_TIMEOUT)
+    {
+        // This timeout should never occur when WIPWAIT is not active, since in this
+        // case the QSPI peripheral should send the command immediately, without any
+        // waiting for previous write to complete.
+        NRFX_ASSERT(p_config->wipwait);
+
+        return NRFX_ERROR_TIMEOUT;
+    }
+    nrf_qspi_event_clear(NRF_QSPI, NRF_QSPI_EVENT_READY);
+
+    if (p_rx_buffer)
+    {
+        nrf_qspi_cinstrdata_get(NRF_QSPI, p_config->length, p_rx_buffer);
+    }
+
+    return NRFX_SUCCESS;
+}
+
+
+  A:                              **************************************************************
+                             *                          FUNCTION                          *
+                             **************************************************************
+                             nrfx_err_t nrfx_qspi_cinstr_xfer(nrf_qspi_cinstr_conf_t 
+                               assume LRset = 0x0
+                               assume TMode = 0x1
+             nrfx_err_t        r0:4           <RETURN>
+             nrf_qspi_cinst    r0:4           p_config
+             void *            r1:4           p_tx_buffer
+             void *            r2:4           p_rx_buffer
+                             nrfx_qspi_cinstr_xfer                           XREF[6]:     Entry Point(*), 
+                                                                                          nrfx_qspi_mem_busy_check:00001e0
+                                                                                          main:000029f2(c), 
+                                                                                          main:00002a06(c), 
+                                                                                          main:00002a22(c), 
+                                                                                          .debug_frame::00000c0c(*)  
+        00001cb0 4b 4b           ldr        r3,[DAT_00001de0]                                = 20000690h
+
+
+
+  B:  
+
+      nrfx_err_t
+      nrfx_qspi_cinstr_xfer(nrf_qspi_cinstr_conf_t *p_config,void *p_tx_buffer,void *p_rx_buffer)
+      
+      {
+        uint uVar1;
+        uint uVar2;
+        int iVar3;
+        
+        if (m_cb.is_busy) {
+          return 0x11;
+        }
+        if (p_tx_buffer == (void *)0x0) goto switchD_00001cd2_caseD_8;
+        switch(p_config->length) {
+        case NRF_QSPI_CINSTR_LEN_2B:
+          _DAT_40029638 = 0;
+          goto LAB_00001d06;
+        case NRF_QSPI_CINSTR_LEN_3B:
+          _DAT_40029638 = 0;
+          goto LAB_00001d00;
+        case NRF_QSPI_CINSTR_LEN_4B:
+          _DAT_40029638 = 0;
+          goto LAB_00001cfa;
+        case NRF_QSPI_CINSTR_LEN_5B:
+          goto switchD_00001cd2_caseD_5;
+        case NRF_QSPI_CINSTR_LEN_6B:
+          _DAT_4002963c = 0;
+          goto LAB_00001cec;
+        case NRF_QSPI_CINSTR_LEN_7B:
+          _DAT_4002963c = 0;
+          goto LAB_00001ce6;
+        case NRF_QSPI_CINSTR_LEN_8B:
+          _DAT_4002963c = 0;
+          break;
+        case NRF_QSPI_CINSTR_LEN_9B:
+          _DAT_4002963c = (uint)*(byte *)((int)p_tx_buffer + 7) << 0x18;
+          break;
+        default:
+          goto switchD_00001cd2_caseD_8;
+        }
+        _DAT_4002963c = _DAT_4002963c | (uint)*(byte *)((int)p_tx_buffer + 6) << 0x10;
+      LAB_00001ce6:
+        _DAT_4002963c = _DAT_4002963c | (uint)*(byte *)((int)p_tx_buffer + 5) << 8;
+      LAB_00001cec:
+        _DAT_4002963c = _DAT_4002963c | *(byte *)((int)p_tx_buffer + 4);
+      switchD_00001cd2_caseD_5:
+        _DAT_40029638 = (uint)*(byte *)((int)p_tx_buffer + 3) << 0x18;
+      LAB_00001cfa:
+        _DAT_40029638 = _DAT_40029638 | (uint)*(byte *)((int)p_tx_buffer + 2) << 0x10;
+      LAB_00001d00:
+        _DAT_40029638 = _DAT_40029638 | (uint)*(byte *)((int)p_tx_buffer + 1) << 8;
+      LAB_00001d06:
+                          /* WARNING: Load size is inaccurate */
+        _DAT_40029638 = _DAT_40029638 | *p_tx_buffer;
+      switchD_00001cd2_caseD_8:
+        _DAT_40029308 = 1;
+        _DAT_40029634 =
+             (uint)p_config->io2_level << 0xc | (uint)p_config->length << 8 | (uint)p_config->opcode |
+             (uint)p_config->io3_level << 0xd | (uint)p_config->wipwait << 0xe |
+             (uint)p_config->wren << 0xf;
+        iVar3 = 100;
+        _DAT_40029100 = 0;
+        while (uVar2 = _DAT_4002963c, uVar1 = _DAT_40029638, _DAT_40029100 == 0) {
+          (*(code *)&delay_machine_code.8378)(0x280);
+          iVar3 = iVar3 + -1;
+          if (iVar3 == 0) {
+            return 0xd;
+          }
+        }
+        _DAT_40029100 = 0;
+        if (p_rx_buffer != (void *)0x0) {
+          switch(p_config->length) {
+          case NRF_QSPI_CINSTR_LEN_9B:
+            *(char *)((int)p_rx_buffer + 7) = (char)(_DAT_4002963c >> 0x18);
+          case NRF_QSPI_CINSTR_LEN_8B:
+            *(char *)((int)p_rx_buffer + 6) = (char)(uVar2 >> 0x10);
+          case NRF_QSPI_CINSTR_LEN_7B:
+            *(char *)((int)p_rx_buffer + 5) = (char)(uVar2 >> 8);
+          case NRF_QSPI_CINSTR_LEN_6B:
+            *(char *)((int)p_rx_buffer + 4) = (char)uVar2;
+          case NRF_QSPI_CINSTR_LEN_5B:
+            *(char *)((int)p_rx_buffer + 3) = (char)(uVar1 >> 0x18);
+          case NRF_QSPI_CINSTR_LEN_4B:
+            *(char *)((int)p_rx_buffer + 2) = (char)(uVar1 >> 0x10);
+          case NRF_QSPI_CINSTR_LEN_3B:
+            *(char *)((int)p_rx_buffer + 1) = (char)(uVar1 >> 8);
+          case NRF_QSPI_CINSTR_LEN_2B:
+            *(char *)p_rx_buffer = (char)uVar1;
+            return 0;
+          }
+        }
+        return 0;
+      }
+
+
+2.) nrfx_qspi_init
+
+nrfx_err_t nrfx_qspi_init(nrfx_qspi_config_t const * p_config,
+                          nrfx_qspi_handler_t        handler,
+                          void *                     p_context)
+{
+    NRFX_ASSERT(p_config);
+    if (m_cb.state != NRFX_DRV_STATE_UNINITIALIZED)
+    {
+        return NRFX_ERROR_INVALID_STATE;
+    }
+
+    if (!qspi_pins_configure(&p_config->pins))
+    {
+        return NRFX_ERROR_INVALID_PARAM;
+    }
+
+    nrf_qspi_xip_offset_set(NRF_QSPI, p_config->xip_offset);
+    nrf_qspi_ifconfig0_set(NRF_QSPI, &p_config->prot_if);
+    nrf_qspi_ifconfig1_set(NRF_QSPI, &p_config->phy_if);
+
+    m_cb.is_busy = false;
+    m_cb.handler = handler;
+    m_cb.p_context = p_context;
+
+    /* QSPI interrupt is disabled because the device should be enabled in polling mode (wait for activate
+       task event ready)*/
+    nrf_qspi_int_disable(NRF_QSPI, NRF_QSPI_INT_READY_MASK);
+
+    if (handler)
+    {
+        NRFX_IRQ_PRIORITY_SET(QSPI_IRQn, p_config->irq_priority);
+        NRFX_IRQ_ENABLE(QSPI_IRQn);
+    }
+
+    m_cb.state = NRFX_DRV_STATE_INITIALIZED;
+
+    nrf_qspi_enable(NRF_QSPI);
+
+    nrf_qspi_event_clear(NRF_QSPI, NRF_QSPI_EVENT_READY);
+    nrf_qspi_task_trigger(NRF_QSPI, NRF_QSPI_TASK_ACTIVATE);
+
+    // Waiting for the peripheral to activate
+
+    return qspi_ready_wait();
+}
+
+
+  A:                              **************************************************************
+                             *                          FUNCTION                          *
+                             **************************************************************
+                             nrfx_err_t nrfx_qspi_init(nrfx_qspi_config_t * p_config,
+                               assume LRset = 0x0
+                               assume TMode = 0x1
+             nrfx_err_t        r0:4           <RETURN>
+             nrfx_qspi_conf    r0:4           p_config
+             nrfx_qspi_hand    r1:4           handler
+             void *            r2:4           p_context
+                             nrfx_qspi_init                                  XREF[3]:     Entry Point(*), main:000029c2(c), 
+                                                                                          .debug_frame::00000bec(*)  
+        00001ab8 f8 b5           push       {r3,r4,r5,r6,r7,lr}
+
+
+  B:
+      nrfx_err_t nrfx_qspi_init(nrfx_qspi_config_t *p_config,nrfx_qspi_handler_t handler,void *p_context)
+
+      {
+        uint uVar1;
+        int iVar2;
+        
+        if (m_cb.state != NRFX_DRV_STATE_UNINITIALIZED) {
+          return 8;
+        }
+        uVar1 = (uint)(p_config->pins).sck_pin;
+        if ((((uVar1 != 0xff) && ((p_config->pins).csn_pin != 0xff)) && ((p_config->pins).io0_pin != 0xff)
+            ) && ((p_config->pins).io1_pin != 0xff)) {
+          if (uVar1 < 0x20) {
+            iVar2 = 0x50000000;
+          }
+          else {
+            uVar1 = uVar1 & 0x1f;
+            iVar2 = 0x50000300;
+          }
+          *(undefined4 *)(iVar2 + (uVar1 + 0x1c0) * 4) = 0x302;
+          uVar1 = (uint)(p_config->pins).csn_pin;
+          if (uVar1 < 0x20) {
+            iVar2 = 0x50000000;
+          }
+          else {
+            uVar1 = uVar1 & 0x1f;
+            iVar2 = 0x50000300;
+          }
+          *(undefined4 *)(iVar2 + (uVar1 + 0x1c0) * 4) = 0x302;
+          uVar1 = (uint)(p_config->pins).io0_pin;
+          if (uVar1 < 0x20) {
+            iVar2 = 0x50000000;
+          }
+          else {
+            uVar1 = uVar1 & 0x1f;
+            iVar2 = 0x50000300;
+          }
+          *(undefined4 *)(iVar2 + (uVar1 + 0x1c0) * 4) = 0x302;
+          uVar1 = (uint)(p_config->pins).io1_pin;
+          if (uVar1 < 0x20) {
+            iVar2 = 0x50000000;
+          }
+          else {
+            uVar1 = uVar1 & 0x1f;
+            iVar2 = 0x50000300;
+          }
+          *(undefined4 *)(iVar2 + (uVar1 + 0x1c0) * 4) = 0x302;
+          uVar1 = (uint)(p_config->pins).io2_pin;
+          if (uVar1 != 0xff) {
+            if (uVar1 < 0x20) {
+              iVar2 = 0x50000000;
+            }
+            else {
+              uVar1 = uVar1 & 0x1f;
+              iVar2 = 0x50000300;
+            }
+            *(undefined4 *)(iVar2 + (uVar1 + 0x1c0) * 4) = 0x302;
+          }
+          uVar1 = (uint)(p_config->pins).io3_pin;
+          if (uVar1 != 0xff) {
+            if (uVar1 < 0x20) {
+              iVar2 = 0x50000000;
+            }
+            else {
+              uVar1 = uVar1 & 0x1f;
+              iVar2 = 0x50000300;
+            }
+            *(undefined4 *)(iVar2 + (uVar1 + 0x1c0) * 4) = 0x302;
+          }
+          _DAT_40029524 = (uint)(p_config->pins).sck_pin;
+          if (_DAT_40029524 == 0xff) {
+            _DAT_40029524 = 0xffffffff;
+          }
+          _DAT_40029528 = (uint)(p_config->pins).csn_pin;
+          if (_DAT_40029528 == 0xff) {
+            _DAT_40029528 = 0xffffffff;
+          }
+          _DAT_40029530 = (uint)(p_config->pins).io0_pin;
+          if (_DAT_40029530 == 0xff) {
+            _DAT_40029530 = 0xffffffff;
+          }
+          _DAT_40029534 = (uint)(p_config->pins).io1_pin;
+          if (_DAT_40029534 == 0xff) {
+            _DAT_40029534 = 0xffffffff;
+          }
+          _DAT_40029538 = (uint)(p_config->pins).io2_pin;
+          if (_DAT_40029538 == 0xff) {
+            _DAT_40029538 = 0xffffffff;
+          }
+          _DAT_4002953c = (uint)(p_config->pins).io3_pin;
+          if (_DAT_4002953c == 0xff) {
+            _DAT_4002953c = 0xffffffff;
+          }
+          _DAT_40029540 = p_config->xip_offset;
+          _DAT_40029544 =
+               (uint)(p_config->prot_if).addrmode << 6 | (uint)(p_config->prot_if).writeoc << 3 |
+               (uint)(p_config->prot_if).readoc;
+          if ((p_config->prot_if).dpmconfig != false) {
+            _DAT_40029544 = _DAT_40029544 | 0x80;
+          }
+          if ((p_config->phy_if).dpmen == false) {
+            uVar1 = 0;
+          }
+          else {
+            uVar1 = 0x1000000;
+          }
+          _DAT_40029600 =
+               _DAT_40029600 & 0xffff00 | (uint)(p_config->phy_if).sck_delay |
+               (uint)(p_config->phy_if).spi_mode << 0x19 | (uint)(p_config->phy_if).sck_freq << 0x1c |
+               uVar1;
+          m_cb.is_busy = false;
+          _DAT_40029308 = 1;
+          if (handler != (nrfx_qspi_handler_t)0x0) {
+            DAT_e000e429 = p_config->irq_priority << 5;
+            _DAT_e000e104 = 0x200;
+          }
+          _DAT_40029500 = 1;
+          m_cb.state = NRFX_DRV_STATE_INITIALIZED;
+          _DAT_40029100 = 0;
+          iVar2 = 100;
+          _DAT_40029000 = 1;
+          m_cb.handler = handler;
+          m_cb.p_context = p_context;
+          do {
+            if (_DAT_40029100 != 0) {
+              return 0;
+            }
+            (*(code *)&delay_machine_code.8378)(0x280);
+            iVar2 = iVar2 + -1;
+          } while (iVar2 != 0);
+          return 0xd;
+        }
+        return 7;
+      }
+
+
+3.) ?????????????????????????????????????????????????????????????????????
+
+
+V. i2s
+
+1.) bsp_board_leds_off
+
+
+                             **************************************************************
+                             *                          FUNCTION                          *
+                             **************************************************************
+                             void bsp_board_leds_off(void)
+                               assume LRset = 0x0
+                               assume TMode = 0x1
+             void              <VOID>         <RETURN>
+                             bsp_board_leds_off                              XREF[3]:     Entry Point(*), main:00002f3e(c), 
+                                                                                          .debug_frame::00000504(*)  
+        00001030 4f f0 a0 43     mov.w      r3,#0x50000000
+
+
+
+
+  A:                              **************************************************************
+                             *                          FUNCTION                          *
+                             **************************************************************
+                             void bsp_board_leds_off(void)
+                               assume LRset = 0x0
+                               assume TMode = 0x1
+             void              <VOID>         <RETURN>
+                             bsp_board_leds_off                              XREF[3]:     Entry Point(*), main:00002f3e(c), 
+                                                                                          .debug_frame::00000504(*)  
+        00001030 4f f0 a0 43     mov.w      r3,#0x50000000
+
+
+  B: 
+
+      void bsp_board_leds_off(void)
+
+      {
+        _DAT_50000508 = 0x10000;
+        return;
+      }
+
+
+
+2.) ???????????????????????????????????????????
+
+
+
+VI. Timer
+
+
+1.) timer_led_event_handler
+
+
+/**
+ * @brief Handler for timer events.
+ */
+void timer_led_event_handler(nrf_timer_event_t event_type, void* p_context)
+{
+    static uint32_t i;
+    uint32_t led_to_invert = ((i++) % LEDS_NUMBER);
+
+    switch (event_type)
+    {
+        case NRF_TIMER_EVENT_COMPARE0:
+            bsp_board_led_invert(led_to_invert);
+            break;
+
+        default:
+            //Do nothing.
+            break;
+    }
+}
+
+
+  A:                               **************************************************************
+                             *                          FUNCTION                          *
+                             **************************************************************
+                             void timer_led_event_handler(nrf_timer_event_t event_typ
+                               assume LRset = 0x0
+                               assume TMode = 0x1
+             void              <VOID>         <RETURN>
+             nrf_timer_even    r0:2           event_type
+             void *            r1:4           p_context
+                             timer_led_event_handler+1                       XREF[2,1]:   Entry Point(*), 
+                             timer_led_event_handler                                      .debug_frame::00000314(*), 
+                                                                                          main:000005d8(*)  
+        000005ac 06 4b           ldr        r3,[DAT_000005c8]                                = 20000094h
+
+
+  B: 
+
+
+        void timer_led_event_handler(nrf_timer_event_t event_type,void *p_context)
+
+        {
+          uint32_t uVar1;
+          
+          uVar1 = timer_led_event_handler::i;
+          timer_led_event_handler::i = timer_led_event_handler::i + 1;
+          if (event_type != NRF_TIMER_EVENT_COMPARE0) {
+            return;
+          }
+          bsp_board_led_invert(uVar1 & 3);
+          return;
+        }
+
+
+2.) timer_led_event_handler
+
+
+/**
+ * @brief Handler for timer events.
+ */
+void timer_led_event_handler(nrf_timer_event_t event_type, void* p_context)
+{
+    static uint32_t i;
+    uint32_t led_to_invert = ((i++) % LEDS_NUMBER);
+
+    switch (event_type)
+    {
+        case NRF_TIMER_EVENT_COMPARE0:
+            bsp_board_led_invert(led_to_invert);
+            break;
+
+        default:
+            //Do nothing.
+            break;
+    }
+}
+
+
+  A:                              **************************************************************
+                             *                          FUNCTION                          *
+                             **************************************************************
+                             void timer_led_event_handler(nrf_timer_event_t event_typ
+                               assume LRset = 0x0
+                               assume TMode = 0x1
+             void              <VOID>         <RETURN>
+             nrf_timer_even    r0:2           event_type
+             void *            r1:4           p_context
+                             timer_led_event_handler+1                       XREF[2,1]:   Entry Point(*), 
+                             timer_led_event_handler                                      .debug_frame::00000314(*), 
+                                                                                          main:000005d8(*)  
+        000005ac 06 4b           ldr        r3,[DAT_000005c8]                                = 20000094h
+        000005ae 1a 68           ldr        r2,[r3,#0x0]=>timer_led_event_handler::i         = ??
+        000005b0 b0 f5 a0 7f     cmp.w      event_type,#0x140
+        000005b4 02 f1 01 01     add.w      p_context,r2,#0x1
+        000005b8 19 60           str        p_context,[r3,#0x0]=>timer_led_event_handler::i  = ??
+        000005ba 00 d0           beq        LAB_000005be
+        000005bc 70 47           bx         lr
+                             LAB_000005be                                    XREF[1]:     000005ba(j)  
+        000005be 02 f0 03 00     and        event_type,r2,#0x3
+        000005c2 ff f7 99 be     b.w        bsp_board_led_invert                             void bsp_board_led_invert(uint32
+                             -- Flow Override: CALL_RETURN (CALL_TERMINATOR)
+
+
+  B: 
+
+      void timer_led_event_handler(nrf_timer_event_t event_type,void *p_context)
+
+{
+  uint32_t uVar1;
+  
+  uVar1 = timer_led_event_handler::i;
+  timer_led_event_handler::i = timer_led_event_handler::i + 1;
+  if (event_type != NRF_TIMER_EVENT_COMPARE0) {
+    return;
+  }
+  bsp_board_led_invert(uVar1 & 3);
+  return;
+}
