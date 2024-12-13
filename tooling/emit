@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+for i in gpt4o turbo
+do
+  for j in ioccc-2020 stream whetstone
+  do
+    cp template $j.$i.disasm
+  done
+done

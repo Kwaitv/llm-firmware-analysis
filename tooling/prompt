@@ -1,0 +1,35 @@
+#!/usr/bin/bash
+
+# to use move this to the data directory
+# $1 is the input binary
+# $2 is the prompt number
+
+data() {
+  case $2 in
+    2)
+      echo What sort of inputs does the code take?
+      exit 0
+      ;;
+    3)
+      echo What sort of output does the code emit?
+      exit 0
+      ;;
+    *)
+      ;;
+  esac
+
+  code="$(cat $1)"
+  form="$(sed 's/.*\.//' <<< $1)"
+  emit=
+  if [[ $form == 'decomp' ]]
+  then
+    emit="decompiled c-code"
+  else
+    emit="disassembled assembly"
+  fi
+
+  cat $1
+  printf "%s\n\nAnalyze this %s and tell me its function and purpose\n" "$code" "$emit"
+}
+
+data $1 $2 | copy 2>/dev/null
