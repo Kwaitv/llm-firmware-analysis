@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+cd tools
+
+wget "https://developer.arm.com/-/media/Files/downloads/gnu-rm/9-2020q2/gcc-arm-none-eabi-9-2020-q2-update-x86_64-linux.tar.bz2?revision=05382cca-1721-44e1-ae19-1e7c3dc96118&rev=05382cca172144e1ae191e7c3dc96118&hash=FDE675133A099796BD1507A3FF215AC4" \
+                                                                    -O "gcc-arm-none-eabi-9-2020-q2-update-x86_64-linux.tar.bz2" \
+  && tar -xf "gcc-arm-none-eabi-9-2020-q2-update-x86_64-linux.tar.bz2" \
+  && rm -rf "gcc-arm-none-eabi-9-2020-q2-update-x86_64-linux.tar.bz2"
+
+wget "https://github.com/nrfconnect/sdk-nrf/archive/refs/tags/v1.7.1.zip" \
+  && cd tools \
+  && unzip "v1.7.1.zip" \
+  && rm -rf "v1.7.1.zip" \
