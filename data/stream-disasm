@@ -1,0 +1,695 @@
+
+stream-bench:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+0000000000001000 <.init>:
+    1000:	f3 0f 1e fa          	endbr64
+    1004:	48 83 ec 08          	sub    $0x8,%rsp
+    1008:	48 8b 05 c1 2f 00 00 	mov    0x2fc1(%rip),%rax        # 3fd0 <gettimeofday@plt+0x2f70>
+    100f:	48 85 c0             	test   %rax,%rax
+    1012:	74 02                	je     1016 <puts@plt-0x1a>
+    1014:	ff d0                	call   *%rax
+    1016:	48 83 c4 08          	add    $0x8,%rsp
+    101a:	c3                   	ret
+
+Disassembly of section .plt:
+
+0000000000001020 <puts@plt-0x10>:
+    1020:	ff 35 ca 2f 00 00    	push   0x2fca(%rip)        # 3ff0 <gettimeofday@plt+0x2f90>
+    1026:	ff 25 cc 2f 00 00    	jmp    *0x2fcc(%rip)        # 3ff8 <gettimeofday@plt+0x2f98>
+    102c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000001030 <puts@plt>:
+    1030:	ff 25 ca 2f 00 00    	jmp    *0x2fca(%rip)        # 4000 <gettimeofday@plt+0x2fa0>
+    1036:	68 00 00 00 00       	push   $0x0
+    103b:	e9 e0 ff ff ff       	jmp    1020 <puts@plt-0x10>
+
+0000000000001040 <__stack_chk_fail@plt>:
+    1040:	ff 25 c2 2f 00 00    	jmp    *0x2fc2(%rip)        # 4008 <gettimeofday@plt+0x2fa8>
+    1046:	68 01 00 00 00       	push   $0x1
+    104b:	e9 d0 ff ff ff       	jmp    1020 <puts@plt-0x10>
+
+0000000000001050 <printf@plt>:
+    1050:	ff 25 ba 2f 00 00    	jmp    *0x2fba(%rip)        # 4010 <gettimeofday@plt+0x2fb0>
+    1056:	68 02 00 00 00       	push   $0x2
+    105b:	e9 c0 ff ff ff       	jmp    1020 <puts@plt-0x10>
+
+0000000000001060 <gettimeofday@plt>:
+    1060:	ff 25 b2 2f 00 00    	jmp    *0x2fb2(%rip)        # 4018 <gettimeofday@plt+0x2fb8>
+    1066:	68 03 00 00 00       	push   $0x3
+    106b:	e9 b0 ff ff ff       	jmp    1020 <puts@plt-0x10>
+
+Disassembly of section .text:
+
+0000000000001070 <.text>:
+    1070:	41 57                	push   %r15
+    1072:	41 56                	push   %r14
+    1074:	41 55                	push   %r13
+    1076:	4c 8d 2d 43 e4 c4 04 	lea    0x4c4e443(%rip),%r13        # 4c4f4c0 <gettimeofday@plt+0x4c4e460>
+    107d:	41 54                	push   %r12
+    107f:	4c 8d 25 3a 98 89 09 	lea    0x989983a(%rip),%r12        # 989a8c0 <gettimeofday@plt+0x9899860>
+    1086:	55                   	push   %rbp
+    1087:	53                   	push   %rbx
+    1088:	48 81 ec 68 01 00 00 	sub    $0x168,%rsp
+    108f:	64 48 8b 3c 25 28 00 	mov    %fs:0x28,%rdi
+    1096:	00 00 
+    1098:	48 89 bc 24 58 01 00 	mov    %rdi,0x158(%rsp)
+    109f:	00 
+    10a0:	48 8d 3d 31 11 00 00 	lea    0x1131(%rip),%rdi        # 21d8 <gettimeofday@plt+0x1178>
+    10a7:	e8 84 ff ff ff       	call   1030 <puts@plt>
+    10ac:	48 8d 3d 63 11 00 00 	lea    0x1163(%rip),%rdi        # 2216 <gettimeofday@plt+0x11b6>
+    10b3:	e8 78 ff ff ff       	call   1030 <puts@plt>
+    10b8:	48 8d 3d 19 11 00 00 	lea    0x1119(%rip),%rdi        # 21d8 <gettimeofday@plt+0x1178>
+    10bf:	e8 6c ff ff ff       	call   1030 <puts@plt>
+    10c4:	be 08 00 00 00       	mov    $0x8,%esi
+    10c9:	48 8d 3d 67 11 00 00 	lea    0x1167(%rip),%rdi        # 2237 <gettimeofday@plt+0x11d7>
+    10d0:	31 c0                	xor    %eax,%eax
+    10d2:	e8 79 ff ff ff       	call   1050 <printf@plt>
+    10d7:	48 8d 3d fa 10 00 00 	lea    0x10fa(%rip),%rdi        # 21d8 <gettimeofday@plt+0x1178>
+    10de:	e8 4d ff ff ff       	call   1030 <puts@plt>
+    10e3:	31 f6                	xor    %esi,%esi
+    10e5:	48 8d 3d 79 11 00 00 	lea    0x1179(%rip),%rdi        # 2265 <gettimeofday@plt+0x1205>
+    10ec:	b0 01                	mov    $0x1,%al
+    10ee:	f2 0f 10 05 2a 15 00 	movsd  0x152a(%rip),%xmm0        # 2620 <gettimeofday@plt+0x15c0>
+    10f5:	00 
+    10f6:	e8 55 ff ff ff       	call   1050 <printf@plt>
+    10fb:	f2 0f 10 0d 35 15 00 	movsd  0x1535(%rip),%xmm1        # 2638 <gettimeofday@plt+0x15d8>
+    1102:	00 
+    1103:	48 8d 3d 91 11 00 00 	lea    0x1191(%rip),%rdi        # 229b <gettimeofday@plt+0x123b>
+    110a:	b0 02                	mov    $0x2,%al
+    110c:	f2 0f 10 05 2c 15 00 	movsd  0x152c(%rip),%xmm0        # 2640 <gettimeofday@plt+0x15e0>
+    1113:	00 
+    1114:	e8 37 ff ff ff       	call   1050 <printf@plt>
+    1119:	f2 0f 10 0d 27 15 00 	movsd  0x1527(%rip),%xmm1        # 2648 <gettimeofday@plt+0x15e8>
+    1120:	00 
+    1121:	48 8d 3d 9e 11 00 00 	lea    0x119e(%rip),%rdi        # 22c6 <gettimeofday@plt+0x1266>
+    1128:	b0 02                	mov    $0x2,%al
+    112a:	f2 0f 10 05 1e 15 00 	movsd  0x151e(%rip),%xmm0        # 2650 <gettimeofday@plt+0x15f0>
+    1131:	00 
+    1132:	e8 19 ff ff ff       	call   1050 <printf@plt>
+    1137:	be 0a 00 00 00       	mov    $0xa,%esi
+    113c:	48 8d 3d b3 11 00 00 	lea    0x11b3(%rip),%rdi        # 22f6 <gettimeofday@plt+0x1296>
+    1143:	31 c0                	xor    %eax,%eax
+    1145:	e8 06 ff ff ff       	call   1050 <printf@plt>
+    114a:	48 8d 3d cd 11 00 00 	lea    0x11cd(%rip),%rdi        # 231e <gettimeofday@plt+0x12be>
+    1151:	e8 da fe ff ff       	call   1030 <puts@plt>
+    1156:	48 8d 3d 02 12 00 00 	lea    0x1202(%rip),%rdi        # 235f <gettimeofday@plt+0x12ff>
+    115d:	e8 ce fe ff ff       	call   1030 <puts@plt>
+    1162:	f2 0f 10 0d c6 14 00 	movsd  0x14c6(%rip),%xmm1        # 2630 <gettimeofday@plt+0x15d0>
+    1169:	00 
+    116a:	f2 0f 10 05 9e 14 00 	movsd  0x149e(%rip),%xmm0        # 2610 <gettimeofday@plt+0x15b0>
+    1171:	00 
+    1172:	31 c0                	xor    %eax,%eax
+    1174:	f2 41 0f 11 0c c4    	movsd  %xmm1,(%r12,%rax,8)
+    117a:	f2 41 0f 11 44 c5 00 	movsd  %xmm0,0x0(%r13,%rax,8)
+    1181:	48 ff c0             	inc    %rax
+    1184:	48 3d 80 96 98 00    	cmp    $0x989680,%rax
+    118a:	75 e8                	jne    1174 <gettimeofday@plt+0x114>
+    118c:	48 8d 2d 2d 2f 00 00 	lea    0x2f2d(%rip),%rbp        # 40c0 <gettimeofday@plt+0x3060>
+    1193:	31 c0                	xor    %eax,%eax
+    1195:	b9 00 2d 31 01       	mov    $0x1312d00,%ecx
+    119a:	48 89 ef             	mov    %rbp,%rdi
+    119d:	49 89 ef             	mov    %rbp,%r15
+    11a0:	f3 ab                	rep stos %eax,%es:(%rdi)
+    11a2:	48 8d 3d 2f 10 00 00 	lea    0x102f(%rip),%rdi        # 21d8 <gettimeofday@plt+0x1178>
+    11a9:	e8 82 fe ff ff       	call   1030 <puts@plt>
+    11ae:	31 c0                	xor    %eax,%eax
+    11b0:	e8 86 04 00 00       	call   163b <gettimeofday@plt+0x5db>
+    11b5:	85 c0                	test   %eax,%eax
+    11b7:	89 c3                	mov    %eax,%ebx
+    11b9:	7e 12                	jle    11cd <gettimeofday@plt+0x16d>
+    11bb:	89 c6                	mov    %eax,%esi
+    11bd:	48 8d 3d cc 11 00 00 	lea    0x11cc(%rip),%rdi        # 2390 <gettimeofday@plt+0x1330>
+    11c4:	31 c0                	xor    %eax,%eax
+    11c6:	e8 85 fe ff ff       	call   1050 <printf@plt>
+    11cb:	eb 11                	jmp    11de <gettimeofday@plt+0x17e>
+    11cd:	48 8d 3d fd 11 00 00 	lea    0x11fd(%rip),%rdi        # 23d1 <gettimeofday@plt+0x1371>
+    11d4:	bb 01 00 00 00       	mov    $0x1,%ebx
+    11d9:	e8 52 fe ff ff       	call   1030 <puts@plt>
+    11de:	31 c0                	xor    %eax,%eax
+    11e0:	e8 04 04 00 00       	call   15e9 <gettimeofday@plt+0x589>
+    11e5:	48 8d 05 d4 96 89 09 	lea    0x98996d4(%rip),%rax        # 989a8c0 <gettimeofday@plt+0x9899860>
+    11ec:	49 8d 94 24 00 b4 c4 	lea    0x4c4b400(%r12),%rdx
+    11f3:	04 
+    11f4:	f2 0f 11 44 24 08    	movsd  %xmm0,0x8(%rsp)
+    11fa:	f2 0f 10 00          	movsd  (%rax),%xmm0
+    11fe:	48 83 c0 08          	add    $0x8,%rax
+    1202:	f2 0f 58 c0          	addsd  %xmm0,%xmm0
+    1206:	f2 0f 11 40 f8       	movsd  %xmm0,-0x8(%rax)
+    120b:	48 39 d0             	cmp    %rdx,%rax
+    120e:	75 ea                	jne    11fa <gettimeofday@plt+0x19a>
+    1210:	31 c0                	xor    %eax,%eax
+    1212:	4c 8d 74 24 68       	lea    0x68(%rsp),%r14
+    1217:	e8 cd 03 00 00       	call   15e9 <gettimeofday@plt+0x589>
+    121c:	f2 0f 5c 44 24 08    	subsd  0x8(%rsp),%xmm0
+    1222:	48 8d 3d e8 11 00 00 	lea    0x11e8(%rip),%rdi        # 2411 <gettimeofday@plt+0x13b1>
+    1229:	31 c0                	xor    %eax,%eax
+    122b:	f2 0f 59 05 d5 13 00 	mulsd  0x13d5(%rip),%xmm0        # 2608 <gettimeofday@plt+0x15a8>
+    1232:	00 
+    1233:	f2 0f 2c f0          	cvttsd2si %xmm0,%esi
+    1237:	f2 0f 11 44 24 08    	movsd  %xmm0,0x8(%rsp)
+    123d:	e8 0e fe ff ff       	call   1050 <printf@plt>
+    1242:	f2 0f 2a cb          	cvtsi2sd %ebx,%xmm1
+    1246:	f2 0f 10 44 24 08    	movsd  0x8(%rsp),%xmm0
+    124c:	31 c0                	xor    %eax,%eax
+    124e:	48 8d 3d f8 11 00 00 	lea    0x11f8(%rip),%rdi        # 244d <gettimeofday@plt+0x13ed>
+    1255:	48 8d 5c 24 18       	lea    0x18(%rsp),%rbx
+    125a:	f2 0f 5e c1          	divsd  %xmm1,%xmm0
+    125e:	f2 0f 2c f0          	cvttsd2si %xmm0,%esi
+    1262:	e8 e9 fd ff ff       	call   1050 <printf@plt>
+    1267:	48 8d 3d f6 11 00 00 	lea    0x11f6(%rip),%rdi        # 2464 <gettimeofday@plt+0x1404>
+    126e:	e8 bd fd ff ff       	call   1030 <puts@plt>
+    1273:	48 8d 3d 1d 12 00 00 	lea    0x121d(%rip),%rdi        # 2497 <gettimeofday@plt+0x1437>
+    127a:	e8 b1 fd ff ff       	call   1030 <puts@plt>
+    127f:	48 8d 3d 52 0f 00 00 	lea    0xf52(%rip),%rdi        # 21d8 <gettimeofday@plt+0x1178>
+    1286:	e8 a5 fd ff ff       	call   1030 <puts@plt>
+    128b:	48 8d 3d 3b 12 00 00 	lea    0x123b(%rip),%rdi        # 24cd <gettimeofday@plt+0x146d>
+    1292:	e8 99 fd ff ff       	call   1030 <puts@plt>
+    1297:	48 8d 3d 5f 12 00 00 	lea    0x125f(%rip),%rdi        # 24fd <gettimeofday@plt+0x149d>
+    129e:	e8 8d fd ff ff       	call   1030 <puts@plt>
+    12a3:	48 8d 3d 81 12 00 00 	lea    0x1281(%rip),%rdi        # 252b <gettimeofday@plt+0x14cb>
+    12aa:	e8 81 fd ff ff       	call   1030 <puts@plt>
+    12af:	48 8d 3d 22 0f 00 00 	lea    0xf22(%rip),%rdi        # 21d8 <gettimeofday@plt+0x1178>
+    12b6:	e8 75 fd ff ff       	call   1030 <puts@plt>
+    12bb:	31 c0                	xor    %eax,%eax
+    12bd:	e8 27 03 00 00       	call   15e9 <gettimeofday@plt+0x589>
+    12c2:	31 c0                	xor    %eax,%eax
+    12c4:	b9 00 2d 31 01       	mov    $0x1312d00,%ecx
+    12c9:	4c 89 ff             	mov    %r15,%rdi
+    12cc:	f2 0f 11 44 24 08    	movsd  %xmm0,0x8(%rsp)
+    12d2:	48 8d 35 e7 95 89 09 	lea    0x98995e7(%rip),%rsi        # 989a8c0 <gettimeofday@plt+0x9899860>
+    12d9:	f3 a5                	rep movsl %ds:(%rsi),%es:(%rdi)
+    12db:	e8 09 03 00 00       	call   15e9 <gettimeofday@plt+0x589>
+    12e0:	f2 0f 5c 44 24 08    	subsd  0x8(%rsp),%xmm0
+    12e6:	31 c0                	xor    %eax,%eax
+    12e8:	f2 0f 11 03          	movsd  %xmm0,(%rbx)
+    12ec:	e8 f8 02 00 00       	call   15e9 <gettimeofday@plt+0x589>
+    12f1:	31 c0                	xor    %eax,%eax
+    12f3:	f2 0f 11 44 24 08    	movsd  %xmm0,0x8(%rsp)
+    12f9:	f2 0f 10 05 17 13 00 	movsd  0x1317(%rip),%xmm0        # 2618 <gettimeofday@plt+0x15b8>
+    1300:	00 
+    1301:	f2 0f 59 44 c5 00    	mulsd  0x0(%rbp,%rax,8),%xmm0
+    1307:	f2 41 0f 11 44 c5 00 	movsd  %xmm0,0x0(%r13,%rax,8)
+    130e:	48 ff c0             	inc    %rax
+    1311:	48 3d 80 96 98 00    	cmp    $0x989680,%rax
+    1317:	75 e0                	jne    12f9 <gettimeofday@plt+0x299>
+    1319:	31 c0                	xor    %eax,%eax
+    131b:	e8 c9 02 00 00       	call   15e9 <gettimeofday@plt+0x589>
+    1320:	f2 0f 5c 44 24 08    	subsd  0x8(%rsp),%xmm0
+    1326:	31 c0                	xor    %eax,%eax
+    1328:	f2 0f 11 43 50       	movsd  %xmm0,0x50(%rbx)
+    132d:	e8 b7 02 00 00       	call   15e9 <gettimeofday@plt+0x589>
+    1332:	31 c0                	xor    %eax,%eax
+    1334:	f2 0f 11 44 24 08    	movsd  %xmm0,0x8(%rsp)
+    133a:	f2 41 0f 10 04 c4    	movsd  (%r12,%rax,8),%xmm0
+    1340:	f2 41 0f 58 44 c5 00 	addsd  0x0(%r13,%rax,8),%xmm0
+    1347:	f2 0f 11 44 c5 00    	movsd  %xmm0,0x0(%rbp,%rax,8)
+    134d:	48 ff c0             	inc    %rax
+    1350:	48 3d 80 96 98 00    	cmp    $0x989680,%rax
+    1356:	75 e2                	jne    133a <gettimeofday@plt+0x2da>
+    1358:	31 c0                	xor    %eax,%eax
+    135a:	e8 8a 02 00 00       	call   15e9 <gettimeofday@plt+0x589>
+    135f:	f2 0f 5c 44 24 08    	subsd  0x8(%rsp),%xmm0
+    1365:	31 c0                	xor    %eax,%eax
+    1367:	f2 0f 11 83 a0 00 00 	movsd  %xmm0,0xa0(%rbx)
+    136e:	00 
+    136f:	e8 75 02 00 00       	call   15e9 <gettimeofday@plt+0x589>
+    1374:	31 c0                	xor    %eax,%eax
+    1376:	f2 0f 11 44 24 08    	movsd  %xmm0,0x8(%rsp)
+    137c:	f2 0f 10 05 94 12 00 	movsd  0x1294(%rip),%xmm0        # 2618 <gettimeofday@plt+0x15b8>
+    1383:	00 
+    1384:	f2 0f 59 44 c5 00    	mulsd  0x0(%rbp,%rax,8),%xmm0
+    138a:	f2 41 0f 58 44 c5 00 	addsd  0x0(%r13,%rax,8),%xmm0
+    1391:	f2 41 0f 11 04 c4    	movsd  %xmm0,(%r12,%rax,8)
+    1397:	48 ff c0             	inc    %rax
+    139a:	48 3d 80 96 98 00    	cmp    $0x989680,%rax
+    13a0:	75 da                	jne    137c <gettimeofday@plt+0x31c>
+    13a2:	31 c0                	xor    %eax,%eax
+    13a4:	48 83 c3 08          	add    $0x8,%rbx
+    13a8:	e8 3c 02 00 00       	call   15e9 <gettimeofday@plt+0x589>
+    13ad:	f2 0f 5c 44 24 08    	subsd  0x8(%rsp),%xmm0
+    13b3:	f2 0f 11 83 e8 00 00 	movsd  %xmm0,0xe8(%rbx)
+    13ba:	00 
+    13bb:	4c 39 f3             	cmp    %r14,%rbx
+    13be:	0f 85 f7 fe ff ff    	jne    12bb <gettimeofday@plt+0x25b>
+    13c4:	48 8d 54 24 20       	lea    0x20(%rsp),%rdx
+    13c9:	48 8d 2d d0 2c 00 00 	lea    0x2cd0(%rip),%rbp        # 40a0 <gettimeofday@plt+0x3040>
+    13d0:	4c 8d 2d 69 2c 00 00 	lea    0x2c69(%rip),%r13        # 4040 <gettimeofday@plt+0x2fe0>
+    13d7:	4c 8d 25 a2 2c 00 00 	lea    0x2ca2(%rip),%r12        # 4080 <gettimeofday@plt+0x3020>
+    13de:	48 89 d1             	mov    %rdx,%rcx
+    13e1:	31 c0                	xor    %eax,%eax
+    13e3:	f2 0f 10 01          	movsd  (%rcx),%xmm0
+    13e7:	f2 0f 10 4c c5 00    	movsd  0x0(%rbp,%rax,8),%xmm1
+    13ed:	48 83 c1 50          	add    $0x50,%rcx
+    13f1:	f2 41 0f 10 14 c4    	movsd  (%r12,%rax,8),%xmm2
+    13f7:	f2 0f 58 c8          	addsd  %xmm0,%xmm1
+    13fb:	f2 0f 5f d0          	maxsd  %xmm0,%xmm2
+    13ff:	f2 0f 11 4c c5 00    	movsd  %xmm1,0x0(%rbp,%rax,8)
+    1405:	f2 41 0f 10 4c c5 00 	movsd  0x0(%r13,%rax,8),%xmm1
+    140c:	f2 41 0f 11 14 c4    	movsd  %xmm2,(%r12,%rax,8)
+    1412:	f2 0f 5d c8          	minsd  %xmm0,%xmm1
+    1416:	f2 41 0f 11 4c c5 00 	movsd  %xmm1,0x0(%r13,%rax,8)
+    141d:	48 ff c0             	inc    %rax
+    1420:	48 83 f8 04          	cmp    $0x4,%rax
+    1424:	75 bd                	jne    13e3 <gettimeofday@plt+0x383>
+    1426:	48 83 c2 08          	add    $0x8,%rdx
+    142a:	4c 39 f2             	cmp    %r14,%rdx
+    142d:	75 af                	jne    13de <gettimeofday@plt+0x37e>
+    142f:	48 8d 3d 15 11 00 00 	lea    0x1115(%rip),%rdi        # 254b <gettimeofday@plt+0x14eb>
+    1436:	31 db                	xor    %ebx,%ebx
+    1438:	e8 f3 fb ff ff       	call   1030 <puts@plt>
+    143d:	48 8d 05 9c 11 00 00 	lea    0x119c(%rip),%rax        # 25e0 <gettimeofday@plt+0x1580>
+    1444:	f2 0f 10 05 b4 11 00 	movsd  0x11b4(%rip),%xmm0        # 2600 <gettimeofday@plt+0x15a0>
+    144b:	00 
+    144c:	f2 41 0f 10 54 dd 00 	movsd  0x0(%r13,%rbx,8),%xmm2
+    1453:	48 8d 3d 30 11 00 00 	lea    0x1130(%rip),%rdi        # 258a <gettimeofday@plt+0x152a>
+    145a:	f2 0f 59 04 d8       	mulsd  (%rax,%rbx,8),%xmm0
+    145f:	48 8d 05 5a 29 00 00 	lea    0x295a(%rip),%rax        # 3dc0 <gettimeofday@plt+0x2d60>
+    1466:	f2 41 0f 10 1c dc    	movsd  (%r12,%rbx,8),%xmm3
+    146c:	48 8b 34 d8          	mov    (%rax,%rbx,8),%rsi
+    1470:	f2 0f 10 4c dd 00    	movsd  0x0(%rbp,%rbx,8),%xmm1
+    1476:	b0 04                	mov    $0x4,%al
+    1478:	f2 0f 5e 0d d8 11 00 	divsd  0x11d8(%rip),%xmm1        # 2658 <gettimeofday@plt+0x15f8>
+    147f:	00 
+    1480:	f2 0f 11 4c dd 00    	movsd  %xmm1,0x0(%rbp,%rbx,8)
+    1486:	48 ff c3             	inc    %rbx
+    1489:	f2 0f 5e c2          	divsd  %xmm2,%xmm0
+    148d:	e8 be fb ff ff       	call   1050 <printf@plt>
+    1492:	48 83 fb 04          	cmp    $0x4,%rbx
+    1496:	75 a5                	jne    143d <gettimeofday@plt+0x3dd>
+    1498:	48 8d 3d 39 0d 00 00 	lea    0xd39(%rip),%rdi        # 21d8 <gettimeofday@plt+0x1178>
+    149f:	e8 8c fb ff ff       	call   1030 <puts@plt>
+    14a4:	31 c0                	xor    %eax,%eax
+    14a6:	e8 47 02 00 00       	call   16f2 <gettimeofday@plt+0x692>
+    14ab:	48 8d 3d 26 0d 00 00 	lea    0xd26(%rip),%rdi        # 21d8 <gettimeofday@plt+0x1178>
+    14b2:	e8 79 fb ff ff       	call   1030 <puts@plt>
+    14b7:	48 8b 84 24 58 01 00 	mov    0x158(%rsp),%rax
+    14be:	00 
+    14bf:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    14c6:	00 00 
+    14c8:	74 05                	je     14cf <gettimeofday@plt+0x46f>
+    14ca:	e8 71 fb ff ff       	call   1040 <__stack_chk_fail@plt>
+    14cf:	48 81 c4 68 01 00 00 	add    $0x168,%rsp
+    14d6:	31 c0                	xor    %eax,%eax
+    14d8:	5b                   	pop    %rbx
+    14d9:	5d                   	pop    %rbp
+    14da:	41 5c                	pop    %r12
+    14dc:	41 5d                	pop    %r13
+    14de:	41 5e                	pop    %r14
+    14e0:	41 5f                	pop    %r15
+    14e2:	c3                   	ret
+    14e3:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    14ea:	00 00 00 
+    14ed:	0f 1f 00             	nopl   (%rax)
+    14f0:	f3 0f 1e fa          	endbr64
+    14f4:	31 ed                	xor    %ebp,%ebp
+    14f6:	49 89 d1             	mov    %rdx,%r9
+    14f9:	5e                   	pop    %rsi
+    14fa:	48 89 e2             	mov    %rsp,%rdx
+    14fd:	48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+    1501:	50                   	push   %rax
+    1502:	54                   	push   %rsp
+    1503:	45 31 c0             	xor    %r8d,%r8d
+    1506:	31 c9                	xor    %ecx,%ecx
+    1508:	48 8d 3d 61 fb ff ff 	lea    -0x49f(%rip),%rdi        # 1070 <gettimeofday@plt+0x10>
+    150f:	ff 15 ab 2a 00 00    	call   *0x2aab(%rip)        # 3fc0 <gettimeofday@plt+0x2f60>
+    1515:	f4                   	hlt
+    1516:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    151d:	00 00 00 
+    1520:	48 8d 3d 39 2b 00 00 	lea    0x2b39(%rip),%rdi        # 4060 <gettimeofday@plt+0x3000>
+    1527:	48 8d 05 32 2b 00 00 	lea    0x2b32(%rip),%rax        # 4060 <gettimeofday@plt+0x3000>
+    152e:	48 39 f8             	cmp    %rdi,%rax
+    1531:	74 15                	je     1548 <gettimeofday@plt+0x4e8>
+    1533:	48 8b 05 8e 2a 00 00 	mov    0x2a8e(%rip),%rax        # 3fc8 <gettimeofday@plt+0x2f68>
+    153a:	48 85 c0             	test   %rax,%rax
+    153d:	74 09                	je     1548 <gettimeofday@plt+0x4e8>
+    153f:	ff e0                	jmp    *%rax
+    1541:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+    1548:	c3                   	ret
+    1549:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+    1550:	48 8d 3d 09 2b 00 00 	lea    0x2b09(%rip),%rdi        # 4060 <gettimeofday@plt+0x3000>
+    1557:	48 8d 35 02 2b 00 00 	lea    0x2b02(%rip),%rsi        # 4060 <gettimeofday@plt+0x3000>
+    155e:	48 29 fe             	sub    %rdi,%rsi
+    1561:	48 89 f0             	mov    %rsi,%rax
+    1564:	48 c1 ee 3f          	shr    $0x3f,%rsi
+    1568:	48 c1 f8 03          	sar    $0x3,%rax
+    156c:	48 01 c6             	add    %rax,%rsi
+    156f:	48 d1 fe             	sar    $1,%rsi
+    1572:	74 14                	je     1588 <gettimeofday@plt+0x528>
+    1574:	48 8b 05 5d 2a 00 00 	mov    0x2a5d(%rip),%rax        # 3fd8 <gettimeofday@plt+0x2f78>
+    157b:	48 85 c0             	test   %rax,%rax
+    157e:	74 08                	je     1588 <gettimeofday@plt+0x528>
+    1580:	ff e0                	jmp    *%rax
+    1582:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+    1588:	c3                   	ret
+    1589:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+    1590:	f3 0f 1e fa          	endbr64
+    1594:	80 3d c5 2a 00 00 00 	cmpb   $0x0,0x2ac5(%rip)        # 4060 <gettimeofday@plt+0x3000>
+    159b:	75 33                	jne    15d0 <gettimeofday@plt+0x570>
+    159d:	55                   	push   %rbp
+    159e:	48 83 3d 3a 2a 00 00 	cmpq   $0x0,0x2a3a(%rip)        # 3fe0 <gettimeofday@plt+0x2f80>
+    15a5:	00 
+    15a6:	48 89 e5             	mov    %rsp,%rbp
+    15a9:	74 0d                	je     15b8 <gettimeofday@plt+0x558>
+    15ab:	48 8b 3d 76 2a 00 00 	mov    0x2a76(%rip),%rdi        # 4028 <gettimeofday@plt+0x2fc8>
+    15b2:	ff 15 28 2a 00 00    	call   *0x2a28(%rip)        # 3fe0 <gettimeofday@plt+0x2f80>
+    15b8:	e8 63 ff ff ff       	call   1520 <gettimeofday@plt+0x4c0>
+    15bd:	c6 05 9c 2a 00 00 01 	movb   $0x1,0x2a9c(%rip)        # 4060 <gettimeofday@plt+0x3000>
+    15c4:	5d                   	pop    %rbp
+    15c5:	c3                   	ret
+    15c6:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    15cd:	00 00 00 
+    15d0:	c3                   	ret
+    15d1:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    15d8:	00 00 00 00 
+    15dc:	0f 1f 40 00          	nopl   0x0(%rax)
+    15e0:	f3 0f 1e fa          	endbr64
+    15e4:	e9 67 ff ff ff       	jmp    1550 <gettimeofday@plt+0x4f0>
+    15e9:	48 83 ec 28          	sub    $0x28,%rsp
+    15ed:	31 f6                	xor    %esi,%esi
+    15ef:	64 48 8b 3c 25 28 00 	mov    %fs:0x28,%rdi
+    15f6:	00 00 
+    15f8:	48 89 7c 24 18       	mov    %rdi,0x18(%rsp)
+    15fd:	48 8d 7c 24 08       	lea    0x8(%rsp),%rdi
+    1602:	e8 59 fa ff ff       	call   1060 <gettimeofday@plt>
+    1607:	f2 48 0f 2a 44 24 10 	cvtsi2sdq 0x10(%rsp),%xmm0
+    160e:	f2 0f 59 05 ea 0f 00 	mulsd  0xfea(%rip),%xmm0        # 2600 <gettimeofday@plt+0x15a0>
+    1615:	00 
+    1616:	f2 48 0f 2a 4c 24 08 	cvtsi2sdq 0x8(%rsp),%xmm1
+    161d:	f2 0f 58 c1          	addsd  %xmm1,%xmm0
+    1621:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+    1626:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    162d:	00 00 
+    162f:	74 05                	je     1636 <gettimeofday@plt+0x5d6>
+    1631:	e8 0a fa ff ff       	call   1040 <__stack_chk_fail@plt>
+    1636:	48 83 c4 28          	add    $0x28,%rsp
+    163a:	c3                   	ret
+    163b:	53                   	push   %rbx
+    163c:	48 81 ec c0 00 00 00 	sub    $0xc0,%rsp
+    1643:	64 48 8b 1c 25 28 00 	mov    %fs:0x28,%rbx
+    164a:	00 00 
+    164c:	48 89 9c 24 b8 00 00 	mov    %rbx,0xb8(%rsp)
+    1653:	00 
+    1654:	31 db                	xor    %ebx,%ebx
+    1656:	31 c0                	xor    %eax,%eax
+    1658:	e8 8c ff ff ff       	call   15e9 <gettimeofday@plt+0x589>
+    165d:	f2 0f 11 44 24 08    	movsd  %xmm0,0x8(%rsp)
+    1663:	31 c0                	xor    %eax,%eax
+    1665:	e8 7f ff ff ff       	call   15e9 <gettimeofday@plt+0x589>
+    166a:	f2 0f 10 1d 8e 0f 00 	movsd  0xf8e(%rip),%xmm3        # 2600 <gettimeofday@plt+0x15a0>
+    1671:	00 
+    1672:	0f 28 c8             	movaps %xmm0,%xmm1
+    1675:	f2 0f 5c 4c 24 08    	subsd  0x8(%rsp),%xmm1
+    167b:	66 0f 2f d9          	comisd %xmm1,%xmm3
+    167f:	77 e2                	ja     1663 <gettimeofday@plt+0x603>
+    1681:	48 8d 44 24 18       	lea    0x18(%rsp),%rax
+    1686:	f2 0f 11 04 d8       	movsd  %xmm0,(%rax,%rbx,8)
+    168b:	48 ff c3             	inc    %rbx
+    168e:	48 83 fb 14          	cmp    $0x14,%rbx
+    1692:	75 c2                	jne    1656 <gettimeofday@plt+0x5f6>
+    1694:	f2 0f 10 0d 6c 0f 00 	movsd  0xf6c(%rip),%xmm1        # 2608 <gettimeofday@plt+0x15a8>
+    169b:	00 
+    169c:	48 8d b4 24 b0 00 00 	lea    0xb0(%rsp),%rsi
+    16a3:	00 
+    16a4:	b9 40 42 0f 00       	mov    $0xf4240,%ecx
+    16a9:	f2 0f 10 40 08       	movsd  0x8(%rax),%xmm0
+    16ae:	f2 0f 5c 00          	subsd  (%rax),%xmm0
+    16b2:	31 ff                	xor    %edi,%edi
+    16b4:	f2 0f 59 c1          	mulsd  %xmm1,%xmm0
+    16b8:	f2 0f 2c d0          	cvttsd2si %xmm0,%edx
+    16bc:	85 d2                	test   %edx,%edx
+    16be:	0f 48 d7             	cmovs  %edi,%edx
+    16c1:	39 d1                	cmp    %edx,%ecx
+    16c3:	0f 4f ca             	cmovg  %edx,%ecx
+    16c6:	48 83 c0 08          	add    $0x8,%rax
+    16ca:	48 39 f0             	cmp    %rsi,%rax
+    16cd:	75 da                	jne    16a9 <gettimeofday@plt+0x649>
+    16cf:	48 8b 84 24 b8 00 00 	mov    0xb8(%rsp),%rax
+    16d6:	00 
+    16d7:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    16de:	00 00 
+    16e0:	74 05                	je     16e7 <gettimeofday@plt+0x687>
+    16e2:	e8 59 f9 ff ff       	call   1040 <__stack_chk_fail@plt>
+    16e7:	48 81 c4 c0 00 00 00 	add    $0xc0,%rsp
+    16ee:	89 c8                	mov    %ecx,%eax
+    16f0:	5b                   	pop    %rbx
+    16f1:	c3                   	ret
+    16f2:	41 57                	push   %r15
+    16f4:	b8 0a 00 00 00       	mov    $0xa,%eax
+    16f9:	41 56                	push   %r14
+    16fb:	41 54                	push   %r12
+    16fd:	55                   	push   %rbp
+    16fe:	53                   	push   %rbx
+    16ff:	48 83 ec 20          	sub    $0x20,%rsp
+    1703:	f2 0f 10 1d 05 0f 00 	movsd  0xf05(%rip),%xmm3        # 2610 <gettimeofday@plt+0x15b0>
+    170a:	00 
+    170b:	f2 0f 10 05 05 0f 00 	movsd  0xf05(%rip),%xmm0        # 2618 <gettimeofday@plt+0x15b8>
+    1712:	00 
+    1713:	0f 28 fb             	movaps %xmm3,%xmm7
+    1716:	f2 0f 59 f8          	mulsd  %xmm0,%xmm7
+    171a:	f2 0f 58 df          	addsd  %xmm7,%xmm3
+    171e:	f2 0f 11 3c 24       	movsd  %xmm7,(%rsp)
+    1723:	f2 0f 11 5c 24 08    	movsd  %xmm3,0x8(%rsp)
+    1729:	f2 0f 59 d8          	mulsd  %xmm0,%xmm3
+    172d:	f2 0f 58 df          	addsd  %xmm7,%xmm3
+    1731:	ff c8                	dec    %eax
+    1733:	75 de                	jne    1713 <gettimeofday@plt+0x6b3>
+    1735:	f3 0f 7e 35 23 0f 00 	movq   0xf23(%rip),%xmm6        # 2660 <gettimeofday@plt+0x1600>
+    173c:	00 
+    173d:	0f 57 d2             	xorps  %xmm2,%xmm2
+    1740:	31 c0                	xor    %eax,%eax
+    1742:	4c 8d 25 77 91 89 09 	lea    0x9899177(%rip),%r12        # 989a8c0 <gettimeofday@plt+0x9899860>
+    1749:	0f 28 e2             	movaps %xmm2,%xmm4
+    174c:	0f 28 ca             	movaps %xmm2,%xmm1
+    174f:	0f 28 ea             	movaps %xmm2,%xmm5
+    1752:	48 8d 2d 67 dd c4 04 	lea    0x4c4dd67(%rip),%rbp        # 4c4f4c0 <gettimeofday@plt+0x4c4e460>
+    1759:	0f 28 fe             	movaps %xmm6,%xmm7
+    175c:	48 8d 1d 5d 29 00 00 	lea    0x295d(%rip),%rbx        # 40c0 <gettimeofday@plt+0x3060>
+    1763:	44 0f 28 c6          	movaps %xmm6,%xmm8
+    1767:	f2 41 0f 10 04 c4    	movsd  (%r12,%rax,8),%xmm0
+    176d:	f2 0f 5c c3          	subsd  %xmm3,%xmm0
+    1771:	66 0f 2f c5          	comisd %xmm5,%xmm0
+    1775:	73 03                	jae    177a <gettimeofday@plt+0x71a>
+    1777:	0f 57 c6             	xorps  %xmm6,%xmm0
+    177a:	f2 0f 58 c8          	addsd  %xmm0,%xmm1
+    177e:	f2 0f 10 44 c5 00    	movsd  0x0(%rbp,%rax,8),%xmm0
+    1784:	f2 0f 5c 04 24       	subsd  (%rsp),%xmm0
+    1789:	66 0f 2f c5          	comisd %xmm5,%xmm0
+    178d:	73 03                	jae    1792 <gettimeofday@plt+0x732>
+    178f:	0f 57 c7             	xorps  %xmm7,%xmm0
+    1792:	f2 0f 58 e0          	addsd  %xmm0,%xmm4
+    1796:	f2 0f 10 04 c3       	movsd  (%rbx,%rax,8),%xmm0
+    179b:	f2 0f 5c 44 24 08    	subsd  0x8(%rsp),%xmm0
+    17a1:	66 0f 2f c5          	comisd %xmm5,%xmm0
+    17a5:	73 04                	jae    17ab <gettimeofday@plt+0x74b>
+    17a7:	41 0f 57 c0          	xorps  %xmm8,%xmm0
+    17ab:	48 ff c0             	inc    %rax
+    17ae:	f2 0f 58 d0          	addsd  %xmm0,%xmm2
+    17b2:	48 3d 80 96 98 00    	cmp    $0x989680,%rax
+    17b8:	75 ad                	jne    1767 <gettimeofday@plt+0x707>
+    17ba:	f2 0f 10 05 5e 0e 00 	movsd  0xe5e(%rip),%xmm0        # 2620 <gettimeofday@plt+0x15c0>
+    17c1:	00 
+    17c2:	f2 0f 5e c8          	divsd  %xmm0,%xmm1
+    17c6:	f2 0f 5e d0          	divsd  %xmm0,%xmm2
+    17ca:	f2 0f 5e e0          	divsd  %xmm0,%xmm4
+    17ce:	0f 28 c1             	movaps %xmm1,%xmm0
+    17d1:	66 49 0f 7e d7       	movq   %xmm2,%r15
+    17d6:	0f 57 d2             	xorps  %xmm2,%xmm2
+    17d9:	f2 0f 5e c3          	divsd  %xmm3,%xmm0
+    17dd:	66 49 0f 7e e6       	movq   %xmm4,%r14
+    17e2:	66 0f 2f c2          	comisd %xmm2,%xmm0
+    17e6:	73 07                	jae    17ef <gettimeofday@plt+0x78f>
+    17e8:	0f 57 05 71 0e 00 00 	xorps  0xe71(%rip),%xmm0        # 2660 <gettimeofday@plt+0x1600>
+    17ef:	66 0f 2f 05 31 0e 00 	comisd 0xe31(%rip),%xmm0        # 2628 <gettimeofday@plt+0x15c8>
+    17f6:	00 
+    17f7:	0f 86 bd 00 00 00    	jbe    18ba <gettimeofday@plt+0x85a>
+    17fd:	f2 0f 10 05 23 0e 00 	movsd  0xe23(%rip),%xmm0        # 2628 <gettimeofday@plt+0x15c8>
+    1804:	00 
+    1805:	48 8d 3d f8 07 00 00 	lea    0x7f8(%rip),%rdi        # 2004 <gettimeofday@plt+0xfa4>
+    180c:	b0 01                	mov    $0x1,%al
+    180e:	f2 0f 11 5c 24 18    	movsd  %xmm3,0x18(%rsp)
+    1814:	f2 0f 11 4c 24 10    	movsd  %xmm1,0x10(%rsp)
+    181a:	e8 31 f8 ff ff       	call   1050 <printf@plt>
+    181f:	f2 0f 10 4c 24 10    	movsd  0x10(%rsp),%xmm1
+    1825:	0f 57 c0             	xorps  %xmm0,%xmm0
+    1828:	f2 0f 10 5c 24 18    	movsd  0x18(%rsp),%xmm3
+    182e:	66 0f 2f c8          	comisd %xmm0,%xmm1
+    1832:	0f 28 d1             	movaps %xmm1,%xmm2
+    1835:	73 07                	jae    183e <gettimeofday@plt+0x7de>
+    1837:	0f 57 15 22 0e 00 00 	xorps  0xe22(%rip),%xmm2        # 2660 <gettimeofday@plt+0x1600>
+    183e:	f2 0f 5e d3          	divsd  %xmm3,%xmm2
+    1842:	0f 28 c3             	movaps %xmm3,%xmm0
+    1845:	48 8d 3d f5 07 00 00 	lea    0x7f5(%rip),%rdi        # 2041 <gettimeofday@plt+0xfe1>
+    184c:	b0 03                	mov    $0x3,%al
+    184e:	f2 0f 11 5c 24 10    	movsd  %xmm3,0x10(%rsp)
+    1854:	e8 f7 f7 ff ff       	call   1050 <printf@plt>
+    1859:	f2 0f 10 5c 24 10    	movsd  0x10(%rsp),%xmm3
+    185f:	31 f6                	xor    %esi,%esi
+    1861:	31 c0                	xor    %eax,%eax
+    1863:	f2 0f 10 0d c5 0d 00 	movsd  0xdc5(%rip),%xmm1        # 2630 <gettimeofday@plt+0x15d0>
+    186a:	00 
+    186b:	f3 0f 7e 25 ed 0d 00 	movq   0xded(%rip),%xmm4        # 2660 <gettimeofday@plt+0x1600>
+    1872:	00 
+    1873:	0f 57 d2             	xorps  %xmm2,%xmm2
+    1876:	f2 41 0f 10 04 c4    	movsd  (%r12,%rax,8),%xmm0
+    187c:	f2 0f 5e c3          	divsd  %xmm3,%xmm0
+    1880:	f2 0f 5c c1          	subsd  %xmm1,%xmm0
+    1884:	66 0f 2f c2          	comisd %xmm2,%xmm0
+    1888:	73 03                	jae    188d <gettimeofday@plt+0x82d>
+    188a:	0f 57 c4             	xorps  %xmm4,%xmm0
+    188d:	66 0f 2f 05 93 0d 00 	comisd 0xd93(%rip),%xmm0        # 2628 <gettimeofday@plt+0x15c8>
+    1894:	00 
+    1895:	76 02                	jbe    1899 <gettimeofday@plt+0x839>
+    1897:	ff c6                	inc    %esi
+    1899:	48 ff c0             	inc    %rax
+    189c:	48 3d 80 96 98 00    	cmp    $0x989680,%rax
+    18a2:	75 d2                	jne    1876 <gettimeofday@plt+0x816>
+    18a4:	48 8d 3d d0 07 00 00 	lea    0x7d0(%rip),%rdi        # 207b <gettimeofday@plt+0x101b>
+    18ab:	31 c0                	xor    %eax,%eax
+    18ad:	41 bc 01 00 00 00    	mov    $0x1,%r12d
+    18b3:	e8 98 f7 ff ff       	call   1050 <printf@plt>
+    18b8:	eb 03                	jmp    18bd <gettimeofday@plt+0x85d>
+    18ba:	45 31 e4             	xor    %r12d,%r12d
+    18bd:	0f 57 c9             	xorps  %xmm1,%xmm1
+    18c0:	66 49 0f 6e c6       	movq   %r14,%xmm0
+    18c5:	f2 0f 5e 04 24       	divsd  (%rsp),%xmm0
+    18ca:	66 0f 2f c1          	comisd %xmm1,%xmm0
+    18ce:	73 07                	jae    18d7 <gettimeofday@plt+0x877>
+    18d0:	0f 57 05 89 0d 00 00 	xorps  0xd89(%rip),%xmm0        # 2660 <gettimeofday@plt+0x1600>
+    18d7:	66 0f 2f 05 49 0d 00 	comisd 0xd49(%rip),%xmm0        # 2628 <gettimeofday@plt+0x15c8>
+    18de:	00 
+    18df:	0f 86 b5 00 00 00    	jbe    199a <gettimeofday@plt+0x93a>
+    18e5:	f2 0f 10 05 3b 0d 00 	movsd  0xd3b(%rip),%xmm0        # 2628 <gettimeofday@plt+0x15c8>
+    18ec:	00 
+    18ed:	48 8d 3d b2 07 00 00 	lea    0x7b2(%rip),%rdi        # 20a6 <gettimeofday@plt+0x1046>
+    18f4:	b0 01                	mov    $0x1,%al
+    18f6:	41 ff c4             	inc    %r12d
+    18f9:	e8 52 f7 ff ff       	call   1050 <printf@plt>
+    18fe:	66 49 0f 6e d6       	movq   %r14,%xmm2
+    1903:	0f 57 c0             	xorps  %xmm0,%xmm0
+    1906:	66 0f 2f d0          	comisd %xmm0,%xmm2
+    190a:	73 07                	jae    1913 <gettimeofday@plt+0x8b3>
+    190c:	0f 57 15 4d 0d 00 00 	xorps  0xd4d(%rip),%xmm2        # 2660 <gettimeofday@plt+0x1600>
+    1913:	f2 0f 10 04 24       	movsd  (%rsp),%xmm0
+    1918:	66 49 0f 6e ce       	movq   %r14,%xmm1
+    191d:	48 8d 3d 1d 07 00 00 	lea    0x71d(%rip),%rdi        # 2041 <gettimeofday@plt+0xfe1>
+    1924:	b0 03                	mov    $0x3,%al
+    1926:	f2 0f 5e 14 24       	divsd  (%rsp),%xmm2
+    192b:	e8 20 f7 ff ff       	call   1050 <printf@plt>
+    1930:	f2 0f 10 05 f0 0c 00 	movsd  0xcf0(%rip),%xmm0        # 2628 <gettimeofday@plt+0x15c8>
+    1937:	00 
+    1938:	48 8d 3d a4 07 00 00 	lea    0x7a4(%rip),%rdi        # 20e3 <gettimeofday@plt+0x1083>
+    193f:	b0 01                	mov    $0x1,%al
+    1941:	e8 0a f7 ff ff       	call   1050 <printf@plt>
+    1946:	31 f6                	xor    %esi,%esi
+    1948:	31 c0                	xor    %eax,%eax
+    194a:	0f 57 d2             	xorps  %xmm2,%xmm2
+    194d:	f2 0f 10 0d db 0c 00 	movsd  0xcdb(%rip),%xmm1        # 2630 <gettimeofday@plt+0x15d0>
+    1954:	00 
+    1955:	f3 0f 7e 1d 03 0d 00 	movq   0xd03(%rip),%xmm3        # 2660 <gettimeofday@plt+0x1600>
+    195c:	00 
+    195d:	f2 0f 10 44 c5 00    	movsd  0x0(%rbp,%rax,8),%xmm0
+    1963:	f2 0f 5e 04 24       	divsd  (%rsp),%xmm0
+    1968:	f2 0f 5c c1          	subsd  %xmm1,%xmm0
+    196c:	66 0f 2f c2          	comisd %xmm2,%xmm0
+    1970:	73 03                	jae    1975 <gettimeofday@plt+0x915>
+    1972:	0f 57 c3             	xorps  %xmm3,%xmm0
+    1975:	66 0f 2f 05 ab 0c 00 	comisd 0xcab(%rip),%xmm0        # 2628 <gettimeofday@plt+0x15c8>
+    197c:	00 
+    197d:	76 02                	jbe    1981 <gettimeofday@plt+0x921>
+    197f:	ff c6                	inc    %esi
+    1981:	48 ff c0             	inc    %rax
+    1984:	48 3d 80 96 98 00    	cmp    $0x989680,%rax
+    198a:	75 d1                	jne    195d <gettimeofday@plt+0x8fd>
+    198c:	48 8d 3d 72 07 00 00 	lea    0x772(%rip),%rdi        # 2105 <gettimeofday@plt+0x10a5>
+    1993:	31 c0                	xor    %eax,%eax
+    1995:	e8 b6 f6 ff ff       	call   1050 <printf@plt>
+    199a:	0f 57 c9             	xorps  %xmm1,%xmm1
+    199d:	66 49 0f 6e c7       	movq   %r15,%xmm0
+    19a2:	f2 0f 5e 44 24 08    	divsd  0x8(%rsp),%xmm0
+    19a8:	66 0f 2f c1          	comisd %xmm1,%xmm0
+    19ac:	73 07                	jae    19b5 <gettimeofday@plt+0x955>
+    19ae:	0f 57 05 ab 0c 00 00 	xorps  0xcab(%rip),%xmm0        # 2660 <gettimeofday@plt+0x1600>
+    19b5:	66 0f 2f 05 6b 0c 00 	comisd 0xc6b(%rip),%xmm0        # 2628 <gettimeofday@plt+0x15c8>
+    19bc:	00 
+    19bd:	0f 86 c0 00 00 00    	jbe    1a83 <gettimeofday@plt+0xa23>
+    19c3:	f2 0f 10 05 5d 0c 00 	movsd  0xc5d(%rip),%xmm0        # 2628 <gettimeofday@plt+0x15c8>
+    19ca:	00 
+    19cb:	48 8d 3d 5e 07 00 00 	lea    0x75e(%rip),%rdi        # 2130 <gettimeofday@plt+0x10d0>
+    19d2:	b0 01                	mov    $0x1,%al
+    19d4:	e8 77 f6 ff ff       	call   1050 <printf@plt>
+    19d9:	66 49 0f 6e d7       	movq   %r15,%xmm2
+    19de:	0f 57 c0             	xorps  %xmm0,%xmm0
+    19e1:	66 0f 2f d0          	comisd %xmm0,%xmm2
+    19e5:	73 07                	jae    19ee <gettimeofday@plt+0x98e>
+    19e7:	0f 57 15 72 0c 00 00 	xorps  0xc72(%rip),%xmm2        # 2660 <gettimeofday@plt+0x1600>
+    19ee:	f2 0f 10 44 24 08    	movsd  0x8(%rsp),%xmm0
+    19f4:	66 49 0f 6e cf       	movq   %r15,%xmm1
+    19f9:	48 8d 3d 41 06 00 00 	lea    0x641(%rip),%rdi        # 2041 <gettimeofday@plt+0xfe1>
+    1a00:	b0 03                	mov    $0x3,%al
+    1a02:	f2 0f 5e 54 24 08    	divsd  0x8(%rsp),%xmm2
+    1a08:	e8 43 f6 ff ff       	call   1050 <printf@plt>
+    1a0d:	f2 0f 10 05 13 0c 00 	movsd  0xc13(%rip),%xmm0        # 2628 <gettimeofday@plt+0x15c8>
+    1a14:	00 
+    1a15:	48 8d 3d c7 06 00 00 	lea    0x6c7(%rip),%rdi        # 20e3 <gettimeofday@plt+0x1083>
+    1a1c:	b0 01                	mov    $0x1,%al
+    1a1e:	e8 2d f6 ff ff       	call   1050 <printf@plt>
+    1a23:	31 f6                	xor    %esi,%esi
+    1a25:	31 c0                	xor    %eax,%eax
+    1a27:	0f 57 d2             	xorps  %xmm2,%xmm2
+    1a2a:	f2 0f 10 0d fe 0b 00 	movsd  0xbfe(%rip),%xmm1        # 2630 <gettimeofday@plt+0x15d0>
+    1a31:	00 
+    1a32:	f3 0f 7e 1d 26 0c 00 	movq   0xc26(%rip),%xmm3        # 2660 <gettimeofday@plt+0x1600>
+    1a39:	00 
+    1a3a:	f2 0f 10 04 c3       	movsd  (%rbx,%rax,8),%xmm0
+    1a3f:	f2 0f 5e 44 24 08    	divsd  0x8(%rsp),%xmm0
+    1a45:	f2 0f 5c c1          	subsd  %xmm1,%xmm0
+    1a49:	66 0f 2f c2          	comisd %xmm2,%xmm0
+    1a4d:	73 03                	jae    1a52 <gettimeofday@plt+0x9f2>
+    1a4f:	0f 57 c3             	xorps  %xmm3,%xmm0
+    1a52:	66 0f 2f 05 ce 0b 00 	comisd 0xbce(%rip),%xmm0        # 2628 <gettimeofday@plt+0x15c8>
+    1a59:	00 
+    1a5a:	76 02                	jbe    1a5e <gettimeofday@plt+0x9fe>
+    1a5c:	ff c6                	inc    %esi
+    1a5e:	48 ff c0             	inc    %rax
+    1a61:	48 3d 80 96 98 00    	cmp    $0x989680,%rax
+    1a67:	75 d1                	jne    1a3a <gettimeofday@plt+0x9da>
+    1a69:	48 83 c4 20          	add    $0x20,%rsp
+    1a6d:	48 8d 3d f9 06 00 00 	lea    0x6f9(%rip),%rdi        # 216d <gettimeofday@plt+0x110d>
+    1a74:	31 c0                	xor    %eax,%eax
+    1a76:	5b                   	pop    %rbx
+    1a77:	5d                   	pop    %rbp
+    1a78:	41 5c                	pop    %r12
+    1a7a:	41 5e                	pop    %r14
+    1a7c:	41 5f                	pop    %r15
+    1a7e:	e9 cd f5 ff ff       	jmp    1050 <printf@plt>
+    1a83:	45 85 e4             	test   %r12d,%r12d
+    1a86:	75 22                	jne    1aaa <gettimeofday@plt+0xa4a>
+    1a88:	f2 0f 10 05 98 0b 00 	movsd  0xb98(%rip),%xmm0        # 2628 <gettimeofday@plt+0x15c8>
+    1a8f:	00 
+    1a90:	48 83 c4 20          	add    $0x20,%rsp
+    1a94:	48 8d 3d fd 06 00 00 	lea    0x6fd(%rip),%rdi        # 2198 <gettimeofday@plt+0x1138>
+    1a9b:	b0 01                	mov    $0x1,%al
+    1a9d:	5b                   	pop    %rbx
+    1a9e:	5d                   	pop    %rbp
+    1a9f:	41 5c                	pop    %r12
+    1aa1:	41 5e                	pop    %r14
+    1aa3:	41 5f                	pop    %r15
+    1aa5:	e9 a6 f5 ff ff       	jmp    1050 <printf@plt>
+    1aaa:	48 83 c4 20          	add    $0x20,%rsp
+    1aae:	5b                   	pop    %rbx
+    1aaf:	5d                   	pop    %rbp
+    1ab0:	41 5c                	pop    %r12
+    1ab2:	41 5e                	pop    %r14
+    1ab4:	41 5f                	pop    %r15
+    1ab6:	c3                   	ret
+
+Disassembly of section .fini:
+
+0000000000001ab8 <.fini>:
+    1ab8:	f3 0f 1e fa          	endbr64
+    1abc:	48 83 ec 08          	sub    $0x8,%rsp
+    1ac0:	48 83 c4 08          	add    $0x8,%rsp
+    1ac4:	c3                   	ret

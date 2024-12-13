@@ -6,24 +6,63 @@
 \section{Related Work}
 % talk about llms for code analysis
 
-This project was large in part inspired by the work of \cite{fang2024large} in their use of LLMs for code analysis, where chatGPT was used.
+This project was large in part inspired by the work of \cite{fang2024large} in
+their use of LLMs for code analysis, where ChatGPT was used.
 
 \section{Methodology}
 
-\subsection{Pre-Trained Model}
+\subsection{LLM Selection}
+
+In our analysis we selected two models to use, though due to hardware
+constraints only one was used on the full suite of tests. 
+\begin{itemize}
+  \item LLaMA-3-8b-Instruct-bnb-4bit \cite{llama3modelcard}: LLaMA is a set of
+  foundation LLMs provided but Meta, with parameter sizes ranging from 1B to
+  70B. LLaMA-3-8b-Instruct-bnb-4bit contains 8B parameters with weights
+  quantized from their original FP32 format down to Int4 and fine-tuned
+  additionally to work particularly well in chat related scenarios. We selected
+  this model as representative of the state of current open source models
+
+  \item GPT-4o: GPT-4o is OpenAI's flagship chat model. We select it to measure
+  how an advanced generic foundation model performs without any fine-tuning on
+  our problem task.
+
+  \item GPT-4-turbo: This model is what OpenAI provides for their fine-tuning
+  service that they call "custom GPTs" wherein as users we can upload
+  supplementary files (such as documentation) and provide a "system" prompt for
+  the user to fine-tune the model's responses to.
+\end{itemize}
 
 \subsection{Dataset}
 
+For our dataset we selected two sets of C codes: one that was platform-agnostic
+and one targeted for the Nordic line of Microprocessors and Peripherals. 
+
 \section{Results}
 
-\subsection{Qualitative Results}
-\subsection{Quantitative Results}
+\subsection{Stream Benchmark}
+\subsection{Whetstone Benchmark}
+\subsection{2020 IOCCC - Best Utility}
+For an obfuscated codes we selected the 2020 winner for best utility by Ilya
+Kurdyukov: an md5sum checksum utility. 
+\subsection{Nordic Peripheral SDK}
+
+\subsubsection{GPIO Tasks and Events}
+\subsubsection{UART}
+\subsubsection{USBD BLE UART} % can this be shorted to ble?
+\subsubsection{QSPI Bootloader}
+\subsubsection{$I^2C$}
+\subsubsection{Timer}
+
 
 
 \section{Future Work}
 
-\subsection{Control Flow Representation}
-% talke about llama mesh
+Our implementation had two key limitations not having jump locations in the
+disassembled case and with larger binaries and function definitions and not
+having an explicit representation of the control flow graph of the provided
+binary that could be emitted from a tool such as \verb|angr|. 
+
+% talk about llama mesh
 
 \section{Conclusion}
-The conclusion goes here.

@@ -1,0 +1,325 @@
+
+ioccc-2020-md5sum:     file format elf64-x86-64
+
+
+Disassembly of section .init:
+
+0000000000001000 <.init>:
+    1000:	f3 0f 1e fa          	endbr64
+    1004:	48 83 ec 08          	sub    $0x8,%rsp
+    1008:	48 8b 05 c1 2f 00 00 	mov    0x2fc1(%rip),%rax        # 3fd0 <getchar@plt+0x2f80>
+    100f:	48 85 c0             	test   %rax,%rax
+    1012:	74 02                	je     1016 <putchar@plt-0x1a>
+    1014:	ff d0                	call   *%rax
+    1016:	48 83 c4 08          	add    $0x8,%rsp
+    101a:	c3                   	ret
+
+Disassembly of section .plt:
+
+0000000000001020 <putchar@plt-0x10>:
+    1020:	ff 35 ca 2f 00 00    	push   0x2fca(%rip)        # 3ff0 <getchar@plt+0x2fa0>
+    1026:	ff 25 cc 2f 00 00    	jmp    *0x2fcc(%rip)        # 3ff8 <getchar@plt+0x2fa8>
+    102c:	0f 1f 40 00          	nopl   0x0(%rax)
+
+0000000000001030 <putchar@plt>:
+    1030:	ff 25 ca 2f 00 00    	jmp    *0x2fca(%rip)        # 4000 <getchar@plt+0x2fb0>
+    1036:	68 00 00 00 00       	push   $0x0
+    103b:	e9 e0 ff ff ff       	jmp    1020 <putchar@plt-0x10>
+
+0000000000001040 <__stack_chk_fail@plt>:
+    1040:	ff 25 c2 2f 00 00    	jmp    *0x2fc2(%rip)        # 4008 <getchar@plt+0x2fb8>
+    1046:	68 01 00 00 00       	push   $0x1
+    104b:	e9 d0 ff ff ff       	jmp    1020 <putchar@plt-0x10>
+
+0000000000001050 <getchar@plt>:
+    1050:	ff 25 ba 2f 00 00    	jmp    *0x2fba(%rip)        # 4010 <getchar@plt+0x2fc0>
+    1056:	68 02 00 00 00       	push   $0x2
+    105b:	e9 c0 ff ff ff       	jmp    1020 <putchar@plt-0x10>
+
+Disassembly of section .text:
+
+0000000000001060 <.text>:
+    1060:	41 57                	push   %r15
+    1062:	b9 14 00 00 00       	mov    $0x14,%ecx
+    1067:	45 31 db             	xor    %r11d,%r11d
+    106a:	41 b8 76 54 32 10    	mov    $0x10325476,%r8d
+    1070:	41 56                	push   %r14
+    1072:	be fe dc ba 98       	mov    $0x98badcfe,%esi
+    1077:	41 55                	push   %r13
+    1079:	41 54                	push   %r12
+    107b:	41 bc 11 11 11 11    	mov    $0x11111111,%r12d
+    1081:	55                   	push   %rbp
+    1082:	bd 01 23 45 67       	mov    $0x67452301,%ebp
+    1087:	53                   	push   %rbx
+    1088:	bb 10 32 54 76       	mov    $0x76543210,%ebx
+    108d:	48 83 ec 78          	sub    $0x78,%rsp
+    1091:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+    1098:	00 00 
+    109a:	48 89 44 24 68       	mov    %rax,0x68(%rsp)
+    109f:	31 c0                	xor    %eax,%eax
+    10a1:	48 8d 7c 24 18       	lea    0x18(%rsp),%rdi
+    10a6:	f3 ab                	rep stos %eax,%es:(%rdi)
+    10a8:	31 c0                	xor    %eax,%eax
+    10aa:	48 89 04 24          	mov    %rax,(%rsp)
+    10ae:	b8 89 ab cd ef       	mov    $0xefcdab89,%eax
+    10b3:	03 6c 24 18          	add    0x18(%rsp),%ebp
+    10b7:	03 44 24 1c          	add    0x1c(%rsp),%eax
+    10bb:	44 03 44 24 24       	add    0x24(%rsp),%r8d
+    10c0:	03 74 24 20          	add    0x20(%rsp),%esi
+    10c4:	89 6c 24 18          	mov    %ebp,0x18(%rsp)
+    10c8:	41 89 ed             	mov    %ebp,%r13d
+    10cb:	89 44 24 1c          	mov    %eax,0x1c(%rsp)
+    10cf:	41 89 c6             	mov    %eax,%r14d
+    10d2:	44 89 c5             	mov    %r8d,%ebp
+    10d5:	89 74 24 20          	mov    %esi,0x20(%rsp)
+    10d9:	44 89 44 24 24       	mov    %r8d,0x24(%rsp)
+    10de:	85 db                	test   %ebx,%ebx
+    10e0:	0f 84 f5 01 00 00    	je     12db <getchar@plt+0x28b>
+    10e6:	41 bf 40 00 00 00    	mov    $0x40,%r15d
+    10ec:	49 83 ff 08          	cmp    $0x8,%r15
+    10f0:	75 63                	jne    1155 <getchar@plt+0x105>
+    10f2:	8b 04 24             	mov    (%rsp),%eax
+    10f5:	89 44 24 2c          	mov    %eax,0x2c(%rsp)
+    10f9:	48 8b 04 24          	mov    (%rsp),%rax
+    10fd:	48 c1 f8 20          	sar    $0x20,%rax
+    1101:	89 44 24 28          	mov    %eax,0x28(%rsp)
+    1105:	4d 85 db             	test   %r11,%r11
+    1108:	78 47                	js     1151 <getchar@plt+0x101>
+    110a:	bb 01 00 00 00       	mov    $0x1,%ebx
+    110f:	89 74 24 08          	mov    %esi,0x8(%rsp)
+    1113:	e8 38 ff ff ff       	call   1050 <getchar@plt>
+    1118:	8b 74 24 08          	mov    0x8(%rsp),%esi
+    111c:	ba 00 00 00 80       	mov    $0x80000000,%edx
+    1121:	4c 63 d8             	movslq %eax,%r11
+    1124:	4d 85 db             	test   %r11,%r11
+    1127:	78 0a                	js     1133 <getchar@plt+0xe3>
+    1129:	48 83 04 24 08       	addq   $0x8,(%rsp)
+    112e:	c1 e0 18             	shl    $0x18,%eax
+    1131:	89 c2                	mov    %eax,%edx
+    1133:	49 ff cf             	dec    %r15
+    1136:	41 c1 ec 08          	shr    $0x8,%r12d
+    113a:	b9 04 00 00 00       	mov    $0x4,%ecx
+    113f:	4c 89 f8             	mov    %r15,%rax
+    1142:	41 09 d4             	or     %edx,%r12d
+    1145:	48 99                	cqto
+    1147:	48 f7 f9             	idiv   %rcx
+    114a:	44 89 64 84 28       	mov    %r12d,0x28(%rsp,%rax,4)
+    114f:	eb 9b                	jmp    10ec <getchar@plt+0x9c>
+    1151:	31 db                	xor    %ebx,%ebx
+    1153:	eb 0e                	jmp    1163 <getchar@plt+0x113>
+    1155:	4d 85 ff             	test   %r15,%r15
+    1158:	74 09                	je     1163 <getchar@plt+0x113>
+    115a:	31 d2                	xor    %edx,%edx
+    115c:	4d 85 db             	test   %r11,%r11
+    115f:	78 d2                	js     1133 <getchar@plt+0xe3>
+    1161:	eb ac                	jmp    110f <getchar@plt+0xbf>
+    1163:	41 89 f0             	mov    %esi,%r8d
+    1166:	45 31 ff             	xor    %r15d,%r15d
+    1169:	44 89 f6             	mov    %r14d,%esi
+    116c:	45 31 d2             	xor    %r10d,%r10d
+    116f:	49 b9 00 00 00 00 00 	movabs $0xffffff0000000000,%r9
+    1176:	ff ff ff 
+    1179:	31 ff                	xor    %edi,%edi
+    117b:	41 bc 04 00 00 00    	mov    $0x4,%r12d
+    1181:	49 69 d1 91 f0 08 00 	imul   $0x8f091,%r9,%rdx
+    1188:	b9 1f 02 00 00       	mov    $0x21f,%ecx
+    118d:	49 69 c2 50 fb 00 00 	imul   $0xfb50,%r10,%rax
+    1194:	48 01 d0             	add    %rdx,%rax
+    1197:	49 69 d2 14 a5 08 00 	imul   $0x8a514,%r10,%rdx
+    119e:	48 c1 f8 15          	sar    $0x15,%rax
+    11a2:	48 01 d0             	add    %rdx,%rax
+    11a5:	49 69 d1 aa 76 0d 00 	imul   $0xd76aa,%r9,%rdx
+    11ac:	48 01 d0             	add    %rdx,%rax
+    11af:	49 69 d2 91 f0 08 00 	imul   $0x8f091,%r10,%rdx
+    11b6:	48 89 44 24 08       	mov    %rax,0x8(%rsp)
+    11bb:	49 69 c1 50 fb 00 00 	imul   $0xfb50,%r9,%rax
+    11c2:	4d 69 c9 14 a5 08 00 	imul   $0x8a514,%r9,%r9
+    11c9:	4d 69 d2 aa 76 0d 00 	imul   $0xd76aa,%r10,%r10
+    11d0:	48 29 d0             	sub    %rdx,%rax
+    11d3:	31 d2                	xor    %edx,%edx
+    11d5:	48 c1 f8 15          	sar    $0x15,%rax
+    11d9:	4c 01 c8             	add    %r9,%rax
+    11dc:	4c 29 d0             	sub    %r10,%rax
+    11df:	4c 8b 54 24 08       	mov    0x8(%rsp),%r10
+    11e4:	48 c1 f8 14          	sar    $0x14,%rax
+    11e8:	49 89 c1             	mov    %rax,%r9
+    11eb:	89 f8                	mov    %edi,%eax
+    11ed:	49 c1 fa 14          	sar    $0x14,%r10
+    11f1:	83 c8 0c             	or     $0xc,%eax
+    11f4:	69 c0 98 00 00 00    	imul   $0x98,%eax,%eax
+    11fa:	f7 f1                	div    %ecx
+    11fc:	b9 52 00 00 00       	mov    $0x52,%ecx
+    1201:	89 d0                	mov    %edx,%eax
+    1203:	31 d2                	xor    %edx,%edx
+    1205:	f7 f1                	div    %ecx
+    1207:	89 f8                	mov    %edi,%eax
+    1209:	83 e0 03             	and    $0x3,%eax
+    120c:	6b c0 2b             	imul   $0x2b,%eax,%eax
+    120f:	c1 e8 03             	shr    $0x3,%eax
+    1212:	83 e2 03             	and    $0x3,%edx
+    1215:	8d 4c 02 04          	lea    0x4(%rdx,%rax,1),%ecx
+    1219:	83 ff 2f             	cmp    $0x2f,%edi
+    121c:	76 08                	jbe    1226 <getchar@plt+0x1d6>
+    121e:	89 ea                	mov    %ebp,%edx
+    1220:	f7 d2                	not    %edx
+    1222:	09 f2                	or     %esi,%edx
+    1224:	eb 24                	jmp    124a <getchar@plt+0x1fa>
+    1226:	83 ff 1f             	cmp    $0x1f,%edi
+    1229:	76 06                	jbe    1231 <getchar@plt+0x1e1>
+    122b:	89 f2                	mov    %esi,%edx
+    122d:	31 ea                	xor    %ebp,%edx
+    122f:	eb 19                	jmp    124a <getchar@plt+0x1fa>
+    1231:	83 ff 0f             	cmp    $0xf,%edi
+    1234:	76 09                	jbe    123f <getchar@plt+0x1ef>
+    1236:	89 f2                	mov    %esi,%edx
+    1238:	44 31 c2             	xor    %r8d,%edx
+    123b:	21 ea                	and    %ebp,%edx
+    123d:	eb 0b                	jmp    124a <getchar@plt+0x1fa>
+    123f:	44 89 c2             	mov    %r8d,%edx
+    1242:	89 f0                	mov    %esi,%eax
+    1244:	31 ea                	xor    %ebp,%edx
+    1246:	f7 d0                	not    %eax
+    1248:	21 c2                	and    %eax,%edx
+    124a:	41 6b c7 07          	imul   $0x7,%r15d,%eax
+    124e:	47 8d 3c bf          	lea    (%r15,%r15,4),%r15d
+    1252:	44 31 c2             	xor    %r8d,%edx
+    1255:	41 83 e7 06          	and    $0x6,%r15d
+    1259:	44 8d 77 01          	lea    0x1(%rdi),%r14d
+    125d:	41 f7 d7             	not    %r15d
+    1260:	44 0f af ff          	imul   %edi,%r15d
+    1264:	d1 e8                	shr    $1,%eax
+    1266:	48 8b 7c 24 08       	mov    0x8(%rsp),%rdi
+    126b:	83 e0 05             	and    $0x5,%eax
+    126e:	48 c1 ff 1c          	sar    $0x1c,%rdi
+    1272:	44 29 f8             	sub    %r15d,%eax
+    1275:	41 bf 13 00 00 00    	mov    $0x13,%r15d
+    127b:	83 e0 0f             	and    $0xf,%eax
+    127e:	41 29 c7             	sub    %eax,%r15d
+    1281:	48 8b 44 24 08       	mov    0x8(%rsp),%rax
+    1286:	48 c1 f8 3c          	sar    $0x3c,%rax
+    128a:	31 f8                	xor    %edi,%eax
+    128c:	42 03 44 bc 18       	add    0x18(%rsp,%r15,4),%eax
+    1291:	45 89 f7             	mov    %r14d,%r15d
+    1294:	01 d0                	add    %edx,%eax
+    1296:	41 c1 ef 04          	shr    $0x4,%r15d
+    129a:	44 01 e8             	add    %r13d,%eax
+    129d:	41 89 ed             	mov    %ebp,%r13d
+    12a0:	d3 c0                	rol    %cl,%eax
+    12a2:	01 f0                	add    %esi,%eax
+    12a4:	41 83 fe 40          	cmp    $0x40,%r14d
+    12a8:	0f 84 05 fe ff ff    	je     10b3 <getchar@plt+0x63>
+    12ae:	44 89 c5             	mov    %r8d,%ebp
+    12b1:	44 89 f7             	mov    %r14d,%edi
+    12b4:	41 89 f0             	mov    %esi,%r8d
+    12b7:	89 c6                	mov    %eax,%esi
+    12b9:	e9 c3 fe ff ff       	jmp    1181 <getchar@plt+0x131>
+    12be:	bf 30 00 00 00       	mov    $0x30,%edi
+    12c3:	83 f8 09             	cmp    $0x9,%eax
+    12c6:	76 05                	jbe    12cd <getchar@plt+0x27d>
+    12c8:	bf 57 00 00 00       	mov    $0x57,%edi
+    12cd:	01 c7                	add    %eax,%edi
+    12cf:	e8 5c fd ff ff       	call   1030 <putchar@plt>
+    12d4:	ff c3                	inc    %ebx
+    12d6:	83 fb 21             	cmp    $0x21,%ebx
+    12d9:	74 25                	je     1300 <getchar@plt+0x2b0>
+    12db:	89 d8                	mov    %ebx,%eax
+    12dd:	89 d9                	mov    %ebx,%ecx
+    12df:	bf 0a 00 00 00       	mov    $0xa,%edi
+    12e4:	c1 e8 03             	shr    $0x3,%eax
+    12e7:	83 e1 07             	and    $0x7,%ecx
+    12ea:	8b 44 84 18          	mov    0x18(%rsp,%rax,4),%eax
+    12ee:	c1 e1 02             	shl    $0x2,%ecx
+    12f1:	83 f1 04             	xor    $0x4,%ecx
+    12f4:	d3 e8                	shr    %cl,%eax
+    12f6:	83 e0 0f             	and    $0xf,%eax
+    12f9:	83 fb 20             	cmp    $0x20,%ebx
+    12fc:	75 c0                	jne    12be <getchar@plt+0x26e>
+    12fe:	eb cf                	jmp    12cf <getchar@plt+0x27f>
+    1300:	48 8b 44 24 68       	mov    0x68(%rsp),%rax
+    1305:	64 48 2b 04 25 28 00 	sub    %fs:0x28,%rax
+    130c:	00 00 
+    130e:	74 05                	je     1315 <getchar@plt+0x2c5>
+    1310:	e8 2b fd ff ff       	call   1040 <__stack_chk_fail@plt>
+    1315:	48 83 c4 78          	add    $0x78,%rsp
+    1319:	31 c0                	xor    %eax,%eax
+    131b:	5b                   	pop    %rbx
+    131c:	5d                   	pop    %rbp
+    131d:	41 5c                	pop    %r12
+    131f:	41 5d                	pop    %r13
+    1321:	41 5e                	pop    %r14
+    1323:	41 5f                	pop    %r15
+    1325:	c3                   	ret
+    1326:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    132d:	00 00 00 
+    1330:	f3 0f 1e fa          	endbr64
+    1334:	31 ed                	xor    %ebp,%ebp
+    1336:	49 89 d1             	mov    %rdx,%r9
+    1339:	5e                   	pop    %rsi
+    133a:	48 89 e2             	mov    %rsp,%rdx
+    133d:	48 83 e4 f0          	and    $0xfffffffffffffff0,%rsp
+    1341:	50                   	push   %rax
+    1342:	54                   	push   %rsp
+    1343:	45 31 c0             	xor    %r8d,%r8d
+    1346:	31 c9                	xor    %ecx,%ecx
+    1348:	48 8d 3d 11 fd ff ff 	lea    -0x2ef(%rip),%rdi        # 1060 <getchar@plt+0x10>
+    134f:	ff 15 6b 2c 00 00    	call   *0x2c6b(%rip)        # 3fc0 <getchar@plt+0x2f70>
+    1355:	f4                   	hlt
+    1356:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    135d:	00 00 00 
+    1360:	48 8d 3d c1 2c 00 00 	lea    0x2cc1(%rip),%rdi        # 4028 <getchar@plt+0x2fd8>
+    1367:	48 8d 05 ba 2c 00 00 	lea    0x2cba(%rip),%rax        # 4028 <getchar@plt+0x2fd8>
+    136e:	48 39 f8             	cmp    %rdi,%rax
+    1371:	74 15                	je     1388 <getchar@plt+0x338>
+    1373:	48 8b 05 4e 2c 00 00 	mov    0x2c4e(%rip),%rax        # 3fc8 <getchar@plt+0x2f78>
+    137a:	48 85 c0             	test   %rax,%rax
+    137d:	74 09                	je     1388 <getchar@plt+0x338>
+    137f:	ff e0                	jmp    *%rax
+    1381:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+    1388:	c3                   	ret
+    1389:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+    1390:	48 8d 3d 91 2c 00 00 	lea    0x2c91(%rip),%rdi        # 4028 <getchar@plt+0x2fd8>
+    1397:	48 8d 35 8a 2c 00 00 	lea    0x2c8a(%rip),%rsi        # 4028 <getchar@plt+0x2fd8>
+    139e:	48 29 fe             	sub    %rdi,%rsi
+    13a1:	48 89 f0             	mov    %rsi,%rax
+    13a4:	48 c1 ee 3f          	shr    $0x3f,%rsi
+    13a8:	48 c1 f8 03          	sar    $0x3,%rax
+    13ac:	48 01 c6             	add    %rax,%rsi
+    13af:	48 d1 fe             	sar    $1,%rsi
+    13b2:	74 14                	je     13c8 <getchar@plt+0x378>
+    13b4:	48 8b 05 1d 2c 00 00 	mov    0x2c1d(%rip),%rax        # 3fd8 <getchar@plt+0x2f88>
+    13bb:	48 85 c0             	test   %rax,%rax
+    13be:	74 08                	je     13c8 <getchar@plt+0x378>
+    13c0:	ff e0                	jmp    *%rax
+    13c2:	66 0f 1f 44 00 00    	nopw   0x0(%rax,%rax,1)
+    13c8:	c3                   	ret
+    13c9:	0f 1f 80 00 00 00 00 	nopl   0x0(%rax)
+    13d0:	f3 0f 1e fa          	endbr64
+    13d4:	80 3d 4d 2c 00 00 00 	cmpb   $0x0,0x2c4d(%rip)        # 4028 <getchar@plt+0x2fd8>
+    13db:	75 33                	jne    1410 <getchar@plt+0x3c0>
+    13dd:	55                   	push   %rbp
+    13de:	48 83 3d fa 2b 00 00 	cmpq   $0x0,0x2bfa(%rip)        # 3fe0 <getchar@plt+0x2f90>
+    13e5:	00 
+    13e6:	48 89 e5             	mov    %rsp,%rbp
+    13e9:	74 0d                	je     13f8 <getchar@plt+0x3a8>
+    13eb:	48 8b 3d 2e 2c 00 00 	mov    0x2c2e(%rip),%rdi        # 4020 <getchar@plt+0x2fd0>
+    13f2:	ff 15 e8 2b 00 00    	call   *0x2be8(%rip)        # 3fe0 <getchar@plt+0x2f90>
+    13f8:	e8 63 ff ff ff       	call   1360 <getchar@plt+0x310>
+    13fd:	c6 05 24 2c 00 00 01 	movb   $0x1,0x2c24(%rip)        # 4028 <getchar@plt+0x2fd8>
+    1404:	5d                   	pop    %rbp
+    1405:	c3                   	ret
+    1406:	66 2e 0f 1f 84 00 00 	cs nopw 0x0(%rax,%rax,1)
+    140d:	00 00 00 
+    1410:	c3                   	ret
+    1411:	66 66 2e 0f 1f 84 00 	data16 cs nopw 0x0(%rax,%rax,1)
+    1418:	00 00 00 00 
+    141c:	0f 1f 40 00          	nopl   0x0(%rax)
+    1420:	f3 0f 1e fa          	endbr64
+    1424:	e9 67 ff ff ff       	jmp    1390 <getchar@plt+0x340>
+
+Disassembly of section .fini:
+
+000000000000142c <.fini>:
+    142c:	f3 0f 1e fa          	endbr64
+    1430:	48 83 ec 08          	sub    $0x8,%rsp
+    1434:	48 83 c4 08          	add    $0x8,%rsp
+    1438:	c3                   	ret

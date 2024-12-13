@@ -1,0 +1,2 @@
+#/usr/bin/bash
+cat _preamble.tex index.tex _postamble.tex | copy
