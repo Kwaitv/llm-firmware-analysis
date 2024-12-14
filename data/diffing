@@ -1,0 +1,12 @@
+#!/usr/bin/bash
+curr=$(pwd)
+for i in $(ls "data/input-data/embedded/");
+do
+  name="$(echo $i | sed 's/_main.c//g')"
+  cd $(fdfind -t d "^$(echo $i | sed 's/_main.c//g')$" "tools/nRF5_SDK_17.1.0_ddde560/examples/peripheral/")/pca10056/blank/armgcc
+  ls
+    make -j
+    cp _build/*bin /project/data/input-data/embedded/$name.bin
+    cp _build/*out /project/data/input-data/embedded/$name.out
+  cd $curr
+done

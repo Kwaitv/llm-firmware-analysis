@@ -1,0 +1,432 @@
+
+// WARNING: Control flow encountered bad instruction data
+// WARNING: [rz-ghidra] Removing arg arg_20000078h because it doesn't fit into ProtoModel
+
+void __stdcall fcn.00000000(int64_t arg4)
+{
+    char *pcVar1;
+    uint8_t *puVar2;
+    uint32_t *puVar3;
+    uint8_t uVar4;
+    char cVar5;
+    uint8_t uVar6;
+    char extraout_AL;
+    undefined extraout_AL_00;
+    char in_AL;
+    char extraout_AH;
+    undefined extraout_AH_00;
+    char in_AH;
+    undefined2 extraout_var;
+    undefined2 extraout_var_00;
+    undefined2 in_register_00000002;
+    undefined4 extraout_var_01;
+    undefined4 extraout_var_02;
+    undefined4 in_register_00000004;
+    uint32_t uVar7;
+    char cVar9;
+    char cVar10;
+    undefined8 uVar8;
+    undefined8 in_RCX;
+    char in_DL;
+    char in_DH;
+    char unaff_BL;
+    uint8_t uVar11;
+    char unaff_BH;
+    unkbyte6 unaff_0000001a;
+    int64_t unaff_RDI;
+    uint64_t uVar12;
+    uint64_t unaff_R15;
+    int64_t var_8fffffbh;
+    
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, in_AL))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, in_AL))) + in_AL;
+    cVar5 = in_AL + ' ' +
+            *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, in_AL + ' ')));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar9 = (char)((uint64_t)in_RCX >> 8);
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar10 = cVar9 * '\x02' + in_DH;
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    uVar11 = unaff_BH + in_AH + cVar9 * '\x02' + in_DH * '\'';
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    *(char *)0xdc000007 = *(char *)0xdc000007 + cVar10;
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    pcVar1 = (char *)(CONCAT62((unkint6)((uint64_t)in_RCX >> 0x10), CONCAT11(cVar10, (char)in_RCX + cVar9 + in_DH)) +
+                     -0x8fffff6);
+    *pcVar1 = *pcVar1 + in_DH;
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    cVar5 = cVar5 + *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5)));
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + cVar5;
+    *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + in_DL;
+    uVar12 = unaff_R15 &
+             *(uint64_t *)
+              (CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, cVar5))) + 0x33);
+    uVar8 = 0xb1134b04;
+    uVar6 = cVar5 + 0x48;
+    puVar2 = (uint8_t *)
+             (CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, uVar6))) + 0x70232301);
+    uVar4 = *puVar2;
+    *puVar2 = *puVar2 + uVar6;
+    *(char *)0x10500007a = *(char *)0x10500007a + uVar11 + CARRY1(uVar4, uVar6);
+    *(uint8_t *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, uVar6))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, uVar6))) + uVar6;
+    *(uint8_t *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, uVar6))) =
+         *(char *)CONCAT44(in_register_00000004, CONCAT22(in_register_00000002, CONCAT11(in_AH, uVar6))) + uVar6;
+    func_0x08000233();
+    uVar7 = (uint32_t)CONCAT62((unkint6)((uint64_t)uVar8 >> 0x10), CONCAT11(3, (char)uVar8));
+    pcVar1 = (char *)(CONCAT44(extraout_var_01, CONCAT22(extraout_var, CONCAT11(extraout_AH, extraout_AL))) + 0xbd08);
+    *pcVar1 = *pcVar1 + extraout_AL;
+    *(char *)CONCAT44(extraout_var_01, CONCAT22(extraout_var, CONCAT11(extraout_AH, extraout_AL))) =
+         *(char *)CONCAT44(extraout_var_01, CONCAT22(extraout_var, CONCAT11(extraout_AH, extraout_AL))) + extraout_AL;
+    *(char *)CONCAT44(extraout_var_01, CONCAT22(extraout_var, CONCAT11(extraout_AH, extraout_AL))) =
+         *(char *)CONCAT44(extraout_var_01, CONCAT22(extraout_var, CONCAT11(extraout_AH, extraout_AL))) + extraout_AH;
+    func_0xffffffffa300024f();
+    pcVar1 = (char *)(uVar12 + 0x2b004b17);
+    *pcVar1 = *pcVar1 + (char)uVar12;
+    *(uint8_t *)(unaff_RDI + 0x469d4b1b) = *(uint8_t *)(unaff_RDI + 0x469d4b1b) | uVar11;
+    *(int32_t *)CONCAT44(extraout_var_02, CONCAT22(extraout_var_00, CONCAT11(extraout_AH_00, extraout_AL_00))) =
+         *(int32_t *)CONCAT44(extraout_var_02, CONCAT22(extraout_var_00, CONCAT11(extraout_AH_00, extraout_AL_00))) + 1;
+    puVar3 = (uint32_t *)(CONCAT62(unaff_0000001a, CONCAT11(uVar11, unaff_BL + cVar9 + in_DH)) + 0x13460f46);
+    *puVar3 = *puVar3 & uVar7;
+    // WARNING: Bad instruction - Truncating control flow here
+    halt_baddata();
+}
+
